@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SoT.AbstractClasses;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoSingleton<PlayerController>
 {
+    private PlayerControls _playerControls;
+
     public LayerMask ignoreLayers;
 
     public GameObject playSpace;
 
-    [SerializeField]
-    GameObject
-        _head,
-        _leftHand,
-        _rightHand;
+    public Transform
+        head,
+        leftHand,
+        rightHand;
 
     [SerializeField]
     GroundChecker _groundChecker;
@@ -57,7 +59,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public Rigidbody playerRB { get; set; }
     public CapsuleCollider playerCollider { get; set; }
-    public Transform head { get; set; }
 
     float collisionRange = 0.75f;
 
@@ -102,6 +103,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void Start()
     {
+        _playerControls = new PlayerControls();
         heightCheck = true;
         OrientationSource();
         canDash = true;
@@ -153,13 +155,21 @@ public class PlayerController : MonoSingleton<PlayerController>
             playerCollider.height = headHeight;
             colliderCenter.y = playerCollider.height / 2;
         }
-
         colliderCenter.x = head.localPosition.x;
         colliderCenter.z = head.localPosition.z;
         playerCollider.center = colliderCenter;
     }
 
-    public void LeftJoystickController(Vector2 pos)
+    void OnMovement(InputValue value)
+    {
+        Debug.Log("moving");
+        Vector2 movementVector = value.Get<Vector2>();
+        Debug.Log("movement = " + movementVector);
+
+        Movement(movementVector);
+    }
+
+    void Movement(Vector2 pos)
     {
         //Player not moving
         if (Mathf.Abs(pos.y) < leftJoystickDeadzoneAdjustment && Mathf.Abs(pos.x) < leftJoystickDeadzoneAdjustment)
@@ -217,7 +227,16 @@ public class PlayerController : MonoSingleton<PlayerController>
         return true;
     }
 
-    public void RightJoystickController(Vector2 pos)
+    void OnRotation(InputValue value)
+    {
+        Debug.Log("moving");
+        Vector2 rotationVector = value.Get<Vector2>();
+        Debug.Log("movement = " + rotationVector);
+
+        Rotation(rotationVector);
+    }
+
+    void Rotation(Vector2 pos)
     {
         if (!roomScale)
         {
@@ -257,7 +276,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             CrouchController(true);
 
         if (physicalJumping && playerCollider.height > 2)
-            JumpController();
+            OnJump();
     }
 
     public void SittingHeightController()
@@ -381,7 +400,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         return dashPosition;
     }
 
-    public void JumpController()
+    void OnJump()
     {
         if (!isCrouched && _groundChecker.GroundCheck())
         {
@@ -414,7 +433,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         // Controller Orientation
         else if (!headOrientation)
-            playerOrientation = _leftHand.transform;
+            playerOrientation = leftHand.transform;
     }
 
     private void ChangeMovementSFX()
