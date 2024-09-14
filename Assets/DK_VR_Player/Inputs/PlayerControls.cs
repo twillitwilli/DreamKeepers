@@ -28,6 +28,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""1433cf9f-4c4f-48c6-ae5f-5babbd7bf60e"",
             ""actions"": [
                 {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f11df9a-ce21-44f1-b32c-f8dd8062b064"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""52d0f986-402e-4b08-8d03-de95aa9d551f"",
@@ -46,18 +55,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Sprint"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
-                    ""id"": ""5d1e87d6-8b28-4d72-8687-65abceb3fc47"",
+                    ""id"": ""3ee88368-c1bb-46ce-8891-b37de6f9bcef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
-                    ""id"": ""2f11df9a-ce21-44f1-b32c-f8dd8062b064"",
+                    ""id"": ""5d1e87d6-8b28-4d72-8687-65abceb3fc47"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -107,6 +116,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""357e7cf8-8e6e-439d-9a86-695418d3733c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GrabActionLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0010581-1654-47e6-8b84-b4f86aaa71a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GrabActionRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ac9217a-824b-45d4-a0c0-8f0a0bc3857e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -134,17 +170,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ac590146-19bd-4a2c-8a5b-641cc9f22ab7"",
-                    ""path"": ""<XRController>{RightHand}/joystickClicked"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a324e083-1a3b-42c3-be51-1f2952168b71"",
                     ""path"": ""<XRController>{LeftHand}/joystickClicked"",
                     ""interactions"": """",
@@ -157,7 +182,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""64de7b1c-e854-428c-83eb-1ba9a15d340a"",
-                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""path"": ""<XRController>{RightHand}/secondaryButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -200,12 +225,122 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ff674566-340a-4999-8b34-a2d1c3f0c307"",
+                    ""path"": ""<ValveIndexController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ded91f22-c431-4fcf-a9a9-d6e4926ea97f"",
                     ""path"": ""<XRController>{RightHand}/triggerButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TriggerRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25fe90e1-75ea-420e-b0cf-f56cfe349e1c"",
+                    ""path"": ""<ValveIndexController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f520767a-c678-4d3d-958b-eac979f516e4"",
+                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac590146-19bd-4a2c-8a5b-641cc9f22ab7"",
+                    ""path"": ""<XRController>{RightHand}/joystickClicked"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ff2168e-b9cb-4214-90af-47a0ac1f2f3f"",
+                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7fde9fd-7ab2-48ca-905c-1ac49c840e71"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""bdf20d64-eda2-444d-a283-5ad5e03635e8"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabActionLeft"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""ac382af4-3caa-496c-ba63-fa0b5a528611"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""384c27a1-5a7d-4f50-8be3-9daaf5773e69"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabActionLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b98731c-c930-4be7-9ac9-8b1e88e4d50d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabActionRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -216,15 +351,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 }");
         // BasicControls
         m_BasicControls = asset.FindActionMap("BasicControls", throwIfNotFound: true);
+        m_BasicControls_Jump = m_BasicControls.FindAction("Jump", throwIfNotFound: true);
         m_BasicControls_Movement = m_BasicControls.FindAction("Movement", throwIfNotFound: true);
         m_BasicControls_Rotation = m_BasicControls.FindAction("Rotation", throwIfNotFound: true);
+        m_BasicControls_Dash = m_BasicControls.FindAction("Dash", throwIfNotFound: true);
         m_BasicControls_Sprint = m_BasicControls.FindAction("Sprint", throwIfNotFound: true);
-        m_BasicControls_Jump = m_BasicControls.FindAction("Jump", throwIfNotFound: true);
         m_BasicControls_Crouch = m_BasicControls.FindAction("Crouch", throwIfNotFound: true);
         m_BasicControls_GrabLeft = m_BasicControls.FindAction("GrabLeft", throwIfNotFound: true);
         m_BasicControls_GrabRight = m_BasicControls.FindAction("GrabRight", throwIfNotFound: true);
         m_BasicControls_TriggerLeft = m_BasicControls.FindAction("TriggerLeft", throwIfNotFound: true);
         m_BasicControls_TriggerRight = m_BasicControls.FindAction("TriggerRight", throwIfNotFound: true);
+        m_BasicControls_Menu = m_BasicControls.FindAction("Menu", throwIfNotFound: true);
+        m_BasicControls_GrabActionLeft = m_BasicControls.FindAction("GrabActionLeft", throwIfNotFound: true);
+        m_BasicControls_GrabActionRight = m_BasicControls.FindAction("GrabActionRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -286,28 +425,36 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // BasicControls
     private readonly InputActionMap m_BasicControls;
     private List<IBasicControlsActions> m_BasicControlsActionsCallbackInterfaces = new List<IBasicControlsActions>();
+    private readonly InputAction m_BasicControls_Jump;
     private readonly InputAction m_BasicControls_Movement;
     private readonly InputAction m_BasicControls_Rotation;
+    private readonly InputAction m_BasicControls_Dash;
     private readonly InputAction m_BasicControls_Sprint;
-    private readonly InputAction m_BasicControls_Jump;
     private readonly InputAction m_BasicControls_Crouch;
     private readonly InputAction m_BasicControls_GrabLeft;
     private readonly InputAction m_BasicControls_GrabRight;
     private readonly InputAction m_BasicControls_TriggerLeft;
     private readonly InputAction m_BasicControls_TriggerRight;
+    private readonly InputAction m_BasicControls_Menu;
+    private readonly InputAction m_BasicControls_GrabActionLeft;
+    private readonly InputAction m_BasicControls_GrabActionRight;
     public struct BasicControlsActions
     {
         private @PlayerControls m_Wrapper;
         public BasicControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Jump => m_Wrapper.m_BasicControls_Jump;
         public InputAction @Movement => m_Wrapper.m_BasicControls_Movement;
         public InputAction @Rotation => m_Wrapper.m_BasicControls_Rotation;
+        public InputAction @Dash => m_Wrapper.m_BasicControls_Dash;
         public InputAction @Sprint => m_Wrapper.m_BasicControls_Sprint;
-        public InputAction @Jump => m_Wrapper.m_BasicControls_Jump;
         public InputAction @Crouch => m_Wrapper.m_BasicControls_Crouch;
         public InputAction @GrabLeft => m_Wrapper.m_BasicControls_GrabLeft;
         public InputAction @GrabRight => m_Wrapper.m_BasicControls_GrabRight;
         public InputAction @TriggerLeft => m_Wrapper.m_BasicControls_TriggerLeft;
         public InputAction @TriggerRight => m_Wrapper.m_BasicControls_TriggerRight;
+        public InputAction @Menu => m_Wrapper.m_BasicControls_Menu;
+        public InputAction @GrabActionLeft => m_Wrapper.m_BasicControls_GrabActionLeft;
+        public InputAction @GrabActionRight => m_Wrapper.m_BasicControls_GrabActionRight;
         public InputActionMap Get() { return m_Wrapper.m_BasicControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,18 +464,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_BasicControlsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_BasicControlsActionsCallbackInterfaces.Add(instance);
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
             @Rotation.started += instance.OnRotation;
             @Rotation.performed += instance.OnRotation;
             @Rotation.canceled += instance.OnRotation;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
@@ -344,22 +494,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @TriggerRight.started += instance.OnTriggerRight;
             @TriggerRight.performed += instance.OnTriggerRight;
             @TriggerRight.canceled += instance.OnTriggerRight;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
+            @GrabActionLeft.started += instance.OnGrabActionLeft;
+            @GrabActionLeft.performed += instance.OnGrabActionLeft;
+            @GrabActionLeft.canceled += instance.OnGrabActionLeft;
+            @GrabActionRight.started += instance.OnGrabActionRight;
+            @GrabActionRight.performed += instance.OnGrabActionRight;
+            @GrabActionRight.canceled += instance.OnGrabActionRight;
         }
 
         private void UnregisterCallbacks(IBasicControlsActions instance)
         {
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
             @Rotation.started -= instance.OnRotation;
             @Rotation.performed -= instance.OnRotation;
             @Rotation.canceled -= instance.OnRotation;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
@@ -375,6 +537,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @TriggerRight.started -= instance.OnTriggerRight;
             @TriggerRight.performed -= instance.OnTriggerRight;
             @TriggerRight.canceled -= instance.OnTriggerRight;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
+            @GrabActionLeft.started -= instance.OnGrabActionLeft;
+            @GrabActionLeft.performed -= instance.OnGrabActionLeft;
+            @GrabActionLeft.canceled -= instance.OnGrabActionLeft;
+            @GrabActionRight.started -= instance.OnGrabActionRight;
+            @GrabActionRight.performed -= instance.OnGrabActionRight;
+            @GrabActionRight.canceled -= instance.OnGrabActionRight;
         }
 
         public void RemoveCallbacks(IBasicControlsActions instance)
@@ -394,14 +565,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public BasicControlsActions @BasicControls => new BasicControlsActions(this);
     public interface IBasicControlsActions
     {
+        void OnJump(InputAction.CallbackContext context);
         void OnMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnGrabLeft(InputAction.CallbackContext context);
         void OnGrabRight(InputAction.CallbackContext context);
         void OnTriggerLeft(InputAction.CallbackContext context);
         void OnTriggerRight(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
+        void OnGrabActionLeft(InputAction.CallbackContext context);
+        void OnGrabActionRight(InputAction.CallbackContext context);
     }
 }

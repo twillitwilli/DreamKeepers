@@ -6,6 +6,15 @@
             "id": "1433cf9f-4c4f-48c6-ae5f-5babbd7bf60e",
             "actions": [
                 {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "2f11df9a-ce21-44f1-b32c-f8dd8062b064",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Movement",
                     "type": "Value",
                     "id": "52d0f986-402e-4b08-8d03-de95aa9d551f",
@@ -24,18 +33,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Dash",
                     "type": "Button",
-                    "id": "5d1e87d6-8b28-4d72-8687-65abceb3fc47",
+                    "id": "3ee88368-c1bb-46ce-8891-b37de6f9bcef",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Sprint",
                     "type": "Button",
-                    "id": "2f11df9a-ce21-44f1-b32c-f8dd8062b064",
+                    "id": "5d1e87d6-8b28-4d72-8687-65abceb3fc47",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -85,6 +94,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "357e7cf8-8e6e-439d-9a86-695418d3733c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabActionLeft",
+                    "type": "Button",
+                    "id": "e0010581-1654-47e6-8b84-b4f86aaa71a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GrabActionRight",
+                    "type": "Button",
+                    "id": "2ac9217a-824b-45d4-a0c0-8f0a0bc3857e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -112,17 +148,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ac590146-19bd-4a2c-8a5b-641cc9f22ab7",
-                    "path": "<XRController>{RightHand}/joystickClicked",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a324e083-1a3b-42c3-be51-1f2952168b71",
                     "path": "<XRController>{LeftHand}/joystickClicked",
                     "interactions": "",
@@ -135,7 +160,7 @@
                 {
                     "name": "",
                     "id": "64de7b1c-e854-428c-83eb-1ba9a15d340a",
-                    "path": "<XRController>{RightHand}/primaryButton",
+                    "path": "<XRController>{RightHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -178,12 +203,122 @@
                 },
                 {
                     "name": "",
+                    "id": "ff674566-340a-4999-8b34-a2d1c3f0c307",
+                    "path": "<ValveIndexController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ded91f22-c431-4fcf-a9a9-d6e4926ea97f",
                     "path": "<XRController>{RightHand}/triggerButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25fe90e1-75ea-420e-b0cf-f56cfe349e1c",
+                    "path": "<ValveIndexController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f520767a-c678-4d3d-958b-eac979f516e4",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac590146-19bd-4a2c-8a5b-641cc9f22ab7",
+                    "path": "<XRController>{RightHand}/joystickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ff2168e-b9cb-4214-90af-47a0ac1f2f3f",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7fde9fd-7ab2-48ca-905c-1ac49c840e71",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "bdf20d64-eda2-444d-a283-5ad5e03635e8",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabActionLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ac382af4-3caa-496c-ba63-fa0b5a528611",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "384c27a1-5a7d-4f50-8be3-9daaf5773e69",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabActionLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8b98731c-c930-4be7-9ac9-8b1e88e4d50d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GrabActionRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

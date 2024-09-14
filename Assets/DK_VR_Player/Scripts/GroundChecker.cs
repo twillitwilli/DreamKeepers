@@ -40,7 +40,7 @@ public class GroundChecker : MonoBehaviour
         //local space
         _changeYValue = transform.localPosition;
 
-        if (!_player.playerStanding && !_player.isCrouched)
+        if (!_player.isStanding && !_player.isCrouched)
             _yValue = -0.93f;
 
         else

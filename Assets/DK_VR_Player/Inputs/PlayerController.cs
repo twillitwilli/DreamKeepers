@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SoT.AbstractClasses;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(InputController))]
+
 public class PlayerController : MonoSingleton<PlayerController>
 {
-    private PlayerControls _playerControls;
-
     public LayerMask ignoreLayers;
 
     public GameObject playSpace;
@@ -24,6 +23,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public PlayerData playerData;
 
+    // -------------- PLAYER SETTINGS --------------------
+
     [HideInInspector]
     public float
         leftJoystickDeadzoneAdjustment = 0.25f,
@@ -34,28 +35,33 @@ public class PlayerController : MonoSingleton<PlayerController>
     [HideInInspector]
     public bool
         isLeftHanded,
-        isGrounded,
-        isCrouched,
-        isSprinting,
-        heightCheck,
-        headOrientation,
+        headOrientation = true,
         snapTurnOn,
         roomScale,
         toggleGrip,
-        playerStanding,
-        disableMovement,
-        sprintEnabled,
-        jumpControllerOn,
-        climbOn,
-        canFly,
+        isStanding = true,
         toggleSprint,
-        playerCalibrationOn,
-        playerHandAdjusterOn,
-        playerMoving,
-        isGhost,
-        physicalJumping,
-        meditating,
-        movementDisabled;
+        physicalJumping;
+
+    // ----------------------------------------------------
+
+    [HideInInspector]
+    public bool
+    isGrounded,
+    isCrouched,
+    isSprinting,
+    heightCheck,
+    disableMovement,
+    sprintEnabled,
+    jumpControllerOn,
+    climbOn,
+    canFly,
+    playerCalibrationOn,
+    playerHandAdjusterOn,
+    playerMoving,
+    isGhost,
+    meditating,
+    movementDisabled;
 
     public Rigidbody playerRB { get; set; }
     public CapsuleCollider playerCollider { get; set; }
@@ -103,13 +109,12 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void Start()
     {
-        _playerControls = new PlayerControls();
         heightCheck = true;
         OrientationSource();
         canDash = true;
         isGrounded = true;
 
-        if (!playerStanding)
+        if (!isStanding)
         {
             playerCollider.height = 1.87f;
             playSpace.transform.localPosition = new Vector3(0, -0.361f, 0);
@@ -125,10 +130,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     void LateUpdate()
     {
         if (!isSprinting && toggleSprint)
-            SprintController();
+            Sprint();
 
-        if (playerStanding)
-            StandingHeightController();
+        if (isStanding)
+            StandingController();
 
         if (runDashCooldown)
             canDash = DashCooldown();
@@ -149,7 +154,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         Vector3 colliderCenter = Vector3.zero;
 
-        if (playerStanding)
+        if (isStanding)
         {
             float headHeight = Mathf.Clamp(head.localPosition.y, 1 / 2, 2);
             playerCollider.height = headHeight;
@@ -160,16 +165,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         playerCollider.center = colliderCenter;
     }
 
-    void OnMovement(InputValue value)
-    {
-        Debug.Log("moving");
-        Vector2 movementVector = value.Get<Vector2>();
-        Debug.Log("movement = " + movementVector);
-
-        Movement(movementVector);
-    }
-
-    void Movement(Vector2 pos)
+    public void Movement(Vector2 pos)
     {
         //Player not moving
         if (Mathf.Abs(pos.y) < leftJoystickDeadzoneAdjustment && Mathf.Abs(pos.x) < leftJoystickDeadzoneAdjustment)
@@ -227,16 +223,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         return true;
     }
 
-    void OnRotation(InputValue value)
-    {
-        Debug.Log("moving");
-        Vector2 rotationVector = value.Get<Vector2>();
-        Debug.Log("movement = " + rotationVector);
-
-        Rotation(rotationVector);
-    }
-
-    void Rotation(Vector2 pos)
+    public void Rotation(Vector2 pos)
     {
         if (!roomScale)
         {
@@ -259,7 +246,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
-    void StandingHeightController()
+    void StandingController()
     {
         if (heightCheck)
         {
@@ -270,16 +257,16 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
 
         if (isCrouched && playerCollider.height > 1.2)
-            CrouchController(false);
+            Crouch(false);
 
         else if (!isCrouched && playerCollider.height < 1.2)
-            CrouchController(true);
+            Crouch(true);
 
         if (physicalJumping && playerCollider.height > 2)
-            OnJump();
+            Jump();
     }
 
-    public void SittingHeightController()
+    public void SittingController()
     {
         if (heightCheck)
         {
@@ -290,17 +277,17 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (!isCrouched)
         {
             sittingPlayerAnim.SetBool("isCrouched", true);
-            CrouchController(true);
+            Crouch(true);
         }
 
         else if (isCrouched)
         {
             sittingPlayerAnim.SetBool("isCrouched", false);
-            CrouchController(false);
+            Crouch(false);
         }
     }
 
-    public void CrouchController(bool crouched)
+    void Crouch(bool crouched)
     {
         if (crouched)
         {
@@ -327,7 +314,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         crouchSpeedSet = true;
     }
 
-    public void SprintController()
+    void Sprint()
     {
         if (!isCrouched && playerMovement == playerData.walkSpeed && !isSprinting)
         {
@@ -400,14 +387,13 @@ public class PlayerController : MonoSingleton<PlayerController>
         return dashPosition;
     }
 
-    void OnJump()
+    public void Jump()
     {
         if (!isCrouched && _groundChecker.GroundCheck())
         {
             playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
             isGrounded = false;
         }
-        Debug.Log("Jumping");
     }
 
     public void FlightController(bool jumpButtonDown)
@@ -460,30 +446,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         Debug.Log("default player setttings ran");
 
-        DefaultControllerDeadZone();
-        DefaultTurnSpeeds();
-
-        isLeftHanded = false;
-        headOrientation = true;
-        snapTurnOn = false;
-        playerStanding = true;
-        roomScale = false;
-        toggleGrip = false;
-        toggleSprint = false;
-
         DefaultAttachmentSettings();
-    }
-
-    public void DefaultControllerDeadZone()
-    {
-        leftJoystickDeadzoneAdjustment = 0.25f;
-        rightJoystickDeadzoneAdjustment = 0.5f;
-    }
-
-    public void DefaultTurnSpeeds()
-    {
-        turnSpeedAdjustment = 1f;
-        snapTurnRotationAdjustment = 45;
     }
 
     public void DefaultAttachmentSettings()
@@ -492,24 +455,6 @@ public class PlayerController : MonoSingleton<PlayerController>
         //_playerComponents.belt.heightStandingPlayer = 0.65f;
         //_playerComponents.belt.heightSittingPlayer = 0.185f;
         //_playerComponents.belt.zAdjustmentForSittingPlayer = 0.145f;
-    }
-
-    public int GetPrimaryHandIndex()
-    {
-        if (isLeftHanded)
-            return 0;
-
-        else
-            return 1;
-    }
-
-    public int GetOffHandIndex()
-    {
-        if (isLeftHanded)
-            return 1;
-
-        else
-            return 0;
     }
 
     void PlayerBounds()
