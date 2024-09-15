@@ -9,7 +9,8 @@ using SoT.AbstractClasses;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
-    public LayerMask ignoreLayers;
+    [SerializeField]
+    LayerMask _ignoreLayers;
 
     public GameObject playSpace;
 
@@ -214,7 +215,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), movePos - transform.position, out hit, collisionRange, -ignoreLayers))
+        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), movePos - transform.position, out hit, collisionRange, -_ignoreLayers))
         {
             if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Rock"))
                 return false;
@@ -378,7 +379,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         RaycastHit hit;
         float range = Vector3.Distance(dashPosition, transform.position);
 
-        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), dashPosition - transform.position, out hit, range, -ignoreLayers))
+        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), dashPosition - transform.position, out hit, range, -_ignoreLayers))
         {
             if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall"))
                 return hit.point + (transform.position - dashPosition).normalized * collisionRange;

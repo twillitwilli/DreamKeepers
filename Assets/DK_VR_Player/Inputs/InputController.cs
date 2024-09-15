@@ -7,11 +7,17 @@ public class InputController : MonoBehaviour
 {
     PlayerController _playerController;
 
+    VRHandController
+        _leftHandController,
+        _rightHandController;
+
     PlayerControls _playerControls;
 
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
+        _leftHandController = _playerController.leftHand.GetComponent<VRHandController>();
+        _rightHandController = _playerController.rightHand.GetComponent<VRHandController>();
     }
 
     private void Start()
@@ -66,14 +72,22 @@ public class InputController : MonoBehaviour
         Debug.Log("Grab Right");
     }
 
-    void OnTriggerLeft()
+    void OnTriggerLeft(InputValue value)
     {
-        Debug.Log("Trigger Left");
+        bool grabbing = value.Get<float>() == 0 ? false : true;
+
+        Debug.Log("Trigger Left" + grabbing);
+
+        _leftHandController.GrabObject(grabbing);
     }
 
-    void OnTriggerRight()
+    void OnTriggerRight(InputValue value)
     {
-        Debug.Log("Trigger Right");
+        bool grabbing = value.Get<float>() == 0 ? false : true;
+
+        Debug.Log("Trigger Right" + grabbing);
+
+        _rightHandController.GrabObject(grabbing);
     }
 
     void OnMenu()
