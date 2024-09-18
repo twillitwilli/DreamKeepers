@@ -30,8 +30,6 @@ public class HandRayCast : MonoBehaviour
 
         if (_hand.currentGrabable == null && Physics.Raycast(transform.position, forward, out hit, range, -_ignoreLayers))
         {
-            Debug.Log("ray hit = " + hit.collider.gameObject);
-
             Throwable newThrowable;
 
             if (hit.collider.TryGetComponent<Throwable>(out newThrowable))
@@ -40,7 +38,11 @@ public class HandRayCast : MonoBehaviour
                     _currentGrabableTarget = newThrowable.gameObject;
 
                 if (!_hitEffect.activeSelf)
+                {
                     _hitEffect.SetActive(true);
+                    _hitEffect.transform.position = hit.transform.position;
+                }
+                    
             }
             else TurnOffHitEffect();
         }
@@ -50,6 +52,9 @@ public class HandRayCast : MonoBehaviour
     {
         if (_hitEffect.activeSelf)
             _hitEffect.SetActive(false);
+        _hitEffect.transform.localPosition = new Vector3(0, 0, 0);
+
+        ResetTarget();
     }
     
     public void ResetTarget()

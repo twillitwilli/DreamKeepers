@@ -62,21 +62,27 @@ public class InputController : MonoBehaviour
         Debug.Log("Sprinting On");
     }
 
-    void OnGrabLeft()
+    void OnGrabLeft(InputValue value)
     {
-        Debug.Log("Grab Left");
+        bool grabbing = value.Get<float>() == 0 ? false : true;
+
+        Debug.Log("Grab Left" + grabbing);
+
+        _leftHandController.TogglePhysicalGrabTrigger(grabbing);
     }
 
-    void OnGrabRight()
+    void OnGrabRight(InputValue value)
     {
-        Debug.Log("Grab Right");
+        bool grabbing = value.Get<float>() == 0 ? false : true;
+
+        Debug.Log("Grab Right" + grabbing);
+
+        _rightHandController.TogglePhysicalGrabTrigger(grabbing);
     }
 
     void OnTriggerLeft(InputValue value)
     {
         bool grabbing = value.Get<float>() == 0 ? false : true;
-
-        Debug.Log("Trigger Left" + grabbing);
 
         _leftHandController.GrabObject(grabbing);
     }
@@ -84,8 +90,6 @@ public class InputController : MonoBehaviour
     void OnTriggerRight(InputValue value)
     {
         bool grabbing = value.Get<float>() == 0 ? false : true;
-
-        Debug.Log("Trigger Right" + grabbing);
 
         _rightHandController.GrabObject(grabbing);
     }

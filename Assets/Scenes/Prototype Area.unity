@@ -134,12 +134,12 @@ GameObject:
   - component: {fileID: 10295875}
   - component: {fileID: 10295874}
   - component: {fileID: 10295873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (32)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &10295872
 Transform:
@@ -239,12 +239,12 @@ GameObject:
   - component: {fileID: 25279635}
   - component: {fileID: 25279634}
   - component: {fileID: 25279633}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (31)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &25279632
 Transform:
@@ -344,12 +344,12 @@ GameObject:
   - component: {fileID: 31809423}
   - component: {fileID: 31809422}
   - component: {fileID: 31809421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (40)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &31809420
 Transform:
@@ -449,12 +449,12 @@ GameObject:
   - component: {fileID: 59898107}
   - component: {fileID: 59898106}
   - component: {fileID: 59898105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (19)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &59898104
 Transform:
@@ -588,12 +588,12 @@ GameObject:
   - component: {fileID: 78325669}
   - component: {fileID: 78325668}
   - component: {fileID: 78325667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (7)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &78325666
 Transform:
@@ -944,12 +944,12 @@ GameObject:
   - component: {fileID: 130752631}
   - component: {fileID: 130752630}
   - component: {fileID: 130752629}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (10)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &130752628
 Transform:
@@ -1154,12 +1154,12 @@ GameObject:
   - component: {fileID: 175865349}
   - component: {fileID: 175865348}
   - component: {fileID: 175865347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (57)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &175865346
 Transform:
@@ -1261,7 +1261,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &289723039
 Transform:
@@ -1278,6 +1278,7 @@ Transform:
   m_Children:
   - {fileID: 1964186328}
   - {fileID: 1529216777}
+  - {fileID: 1818802047}
   - {fileID: 10295872}
   - {fileID: 949720335}
   - {fileID: 2120879710}
@@ -1286,6 +1287,7 @@ Transform:
   - {fileID: 879643454}
   - {fileID: 2122969102}
   - {fileID: 1753841218}
+  - {fileID: 863149059}
   - {fileID: 1866923860}
   - {fileID: 1491225065}
   - {fileID: 1412974041}
@@ -1294,6 +1296,7 @@ Transform:
   - {fileID: 59898104}
   - {fileID: 678577065}
   - {fileID: 1609777021}
+  - {fileID: 1897527190}
   - {fileID: 31809420}
   - {fileID: 1639534120}
   - {fileID: 691788204}
@@ -1310,6 +1313,7 @@ Transform:
   - {fileID: 375822748}
   - {fileID: 1543932679}
   - {fileID: 452475768}
+  - {fileID: 1130636981}
   - {fileID: 1907748070}
   - {fileID: 1882674111}
   - {fileID: 1797628838}
@@ -1326,6 +1330,7 @@ Transform:
   - {fileID: 1787304398}
   - {fileID: 1721575279}
   - {fileID: 927456498}
+  - {fileID: 1845897323}
   - {fileID: 1176202174}
   - {fileID: 923235292}
   - {fileID: 175865346}
@@ -1355,12 +1360,12 @@ GameObject:
   - component: {fileID: 319956131}
   - component: {fileID: 319956130}
   - component: {fileID: 319956129}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (11)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &319956128
 Transform:
@@ -1460,12 +1465,12 @@ GameObject:
   - component: {fileID: 375822751}
   - component: {fileID: 375822750}
   - component: {fileID: 375822749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (23)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &375822748
 Transform:
@@ -1670,12 +1675,12 @@ GameObject:
   - component: {fileID: 451315482}
   - component: {fileID: 451315481}
   - component: {fileID: 451315480}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (43)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &451315479
 Transform:
@@ -1775,12 +1780,12 @@ GameObject:
   - component: {fileID: 452475771}
   - component: {fileID: 452475770}
   - component: {fileID: 452475769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (2)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &452475768
 Transform:
@@ -1880,12 +1885,12 @@ GameObject:
   - component: {fileID: 452819489}
   - component: {fileID: 452819488}
   - component: {fileID: 452819487}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (14)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &452819486
 Transform:
@@ -1985,12 +1990,12 @@ GameObject:
   - component: {fileID: 486672506}
   - component: {fileID: 486672505}
   - component: {fileID: 486672504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (6)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &486672503
 Transform:
@@ -2090,12 +2095,12 @@ GameObject:
   - component: {fileID: 528879360}
   - component: {fileID: 528879359}
   - component: {fileID: 528879358}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (15)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &528879357
 Transform:
@@ -2195,12 +2200,12 @@ GameObject:
   - component: {fileID: 575492327}
   - component: {fileID: 575492326}
   - component: {fileID: 575492325}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (21)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &575492324
 Transform:
@@ -2302,7 +2307,7 @@ GameObject:
   - component: {fileID: 583175528}
   m_Layer: 3
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2445,12 +2450,12 @@ GameObject:
   - component: {fileID: 638508471}
   - component: {fileID: 638508470}
   - component: {fileID: 638508469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (61)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &638508468
 Transform:
@@ -2584,12 +2589,12 @@ GameObject:
   - component: {fileID: 659868403}
   - component: {fileID: 659868402}
   - component: {fileID: 659868401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (50)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &659868400
 Transform:
@@ -2794,12 +2799,12 @@ GameObject:
   - component: {fileID: 673441293}
   - component: {fileID: 673441292}
   - component: {fileID: 673441291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (38)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &673441290
 Transform:
@@ -2899,12 +2904,12 @@ GameObject:
   - component: {fileID: 678577068}
   - component: {fileID: 678577067}
   - component: {fileID: 678577066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (39)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &678577065
 Transform:
@@ -3109,12 +3114,12 @@ GameObject:
   - component: {fileID: 691788207}
   - component: {fileID: 691788206}
   - component: {fileID: 691788205}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (41)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &691788204
 Transform:
@@ -3308,12 +3313,12 @@ GameObject:
   - component: {fileID: 706230223}
   - component: {fileID: 706230222}
   - component: {fileID: 706230221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (12)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &706230220
 Transform:
@@ -3413,12 +3418,12 @@ GameObject:
   - component: {fileID: 719812669}
   - component: {fileID: 719812668}
   - component: {fileID: 719812667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (30)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &719812666
 Transform:
@@ -3518,12 +3523,12 @@ GameObject:
   - component: {fileID: 729099745}
   - component: {fileID: 729099744}
   - component: {fileID: 729099743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (60)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &729099742
 Transform:
@@ -3833,12 +3838,12 @@ GameObject:
   - component: {fileID: 847800477}
   - component: {fileID: 847800476}
   - component: {fileID: 847800475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (52)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &847800474
 Transform:
@@ -3925,6 +3930,111 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847800473}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &863149058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863149059}
+  - component: {fileID: 863149062}
+  - component: {fileID: 863149061}
+  - component: {fileID: 863149060}
+  m_Layer: 8
+  m_Name: Climbable (65)
+  m_TagString: Climbable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &863149059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863149058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.010003, z: -13.67}
+  m_LocalScale: {x: 1, y: 0.39074, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289723039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &863149060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863149058}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &863149061
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863149058}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a3737995ac6a0804fafdcd92c3dbbbfd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &863149062
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863149058}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &864031853
 GameObject:
@@ -4084,12 +4194,12 @@ GameObject:
   - component: {fileID: 879643457}
   - component: {fileID: 879643456}
   - component: {fileID: 879643455}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (17)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &879643454
 Transform:
@@ -4257,12 +4367,12 @@ GameObject:
   - component: {fileID: 923235295}
   - component: {fileID: 923235294}
   - component: {fileID: 923235293}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (28)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &923235292
 Transform:
@@ -4362,12 +4472,12 @@ GameObject:
   - component: {fileID: 927456501}
   - component: {fileID: 927456500}
   - component: {fileID: 927456499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (3)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &927456498
 Transform:
@@ -4467,12 +4577,12 @@ GameObject:
   - component: {fileID: 949720338}
   - component: {fileID: 949720337}
   - component: {fileID: 949720336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (16)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &949720335
 Transform:
@@ -4679,7 +4789,7 @@ GameObject:
   - component: {fileID: 996797266}
   m_Layer: 3
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4779,6 +4889,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 71298974}
     m_Modifications:
     - target: {fileID: 1555647257006693495, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_CurrentTrackingState
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555647257006693495, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4802,6 +4916,10 @@ PrefabInstance:
       propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
       value: <XRController>{LeftHand}/deviceRotation
       objectReference: {fileID: 0}
+    - target: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: _oppositeHand
+      value: 
+      objectReference: {fileID: 1755614113}
     - target: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: _playerController
       value: 
@@ -4841,6 +4959,18 @@ PrefabInstance:
     - target: {fileID: 8870331230306880824, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_Name
       value: VR_Hand_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037512656753256850, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037512656753256850, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.057
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037512656753256850, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.003
       objectReference: {fileID: 0}
     - target: {fileID: 9164604506741380206, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4892,6 +5022,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9164604506741380206, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
   m_PrefabInstance: {fileID: 1045970232}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1045970234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+  m_PrefabInstance: {fileID: 1045970232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed18427cd3415840a8ea2e2b466656d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1075326986
 GameObject:
   m_ObjectHideFlags: 0
@@ -5146,6 +5287,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100750090}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1130636980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130636981}
+  - component: {fileID: 1130636984}
+  - component: {fileID: 1130636983}
+  - component: {fileID: 1130636982}
+  m_Layer: 8
+  m_Name: Climbable (67)
+  m_TagString: Climbable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1130636981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130636980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7100034, z: -13.67}
+  m_LocalScale: {x: 1, y: 0.39074, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289723039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1130636982
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130636980}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1130636983
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130636980}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a3737995ac6a0804fafdcd92c3dbbbfd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1130636984
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130636980}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1161794014
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,12 +5404,12 @@ GameObject:
   - component: {fileID: 1161794018}
   - component: {fileID: 1161794017}
   - component: {fileID: 1161794016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (63)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1161794015
 Transform:
@@ -5263,12 +5509,12 @@ GameObject:
   - component: {fileID: 1169104332}
   - component: {fileID: 1169104331}
   - component: {fileID: 1169104330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (29)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1169104329
 Transform:
@@ -5368,12 +5614,12 @@ GameObject:
   - component: {fileID: 1169260676}
   - component: {fileID: 1169260675}
   - component: {fileID: 1169260674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (44)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1169260673
 Transform:
@@ -5473,12 +5719,12 @@ GameObject:
   - component: {fileID: 1170770799}
   - component: {fileID: 1170770798}
   - component: {fileID: 1170770797}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (62)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1170770796
 Transform:
@@ -5578,12 +5824,12 @@ GameObject:
   - component: {fileID: 1176202177}
   - component: {fileID: 1176202176}
   - component: {fileID: 1176202175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (56)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1176202174
 Transform:
@@ -5683,12 +5929,12 @@ GameObject:
   - component: {fileID: 1199923833}
   - component: {fileID: 1199923832}
   - component: {fileID: 1199923831}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (5)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1199923830
 Transform:
@@ -5788,12 +6034,12 @@ GameObject:
   - component: {fileID: 1203161961}
   - component: {fileID: 1203161960}
   - component: {fileID: 1203161959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (58)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1203161958
 Transform:
@@ -5924,12 +6170,12 @@ GameObject:
   - component: {fileID: 1223331194}
   - component: {fileID: 1223331193}
   - component: {fileID: 1223331192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (46)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1223331191
 Transform:
@@ -6029,12 +6275,12 @@ GameObject:
   - component: {fileID: 1339196982}
   - component: {fileID: 1339196981}
   - component: {fileID: 1339196980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (8)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1339196979
 Transform:
@@ -6344,12 +6590,12 @@ GameObject:
   - component: {fileID: 1410896326}
   - component: {fileID: 1410896325}
   - component: {fileID: 1410896324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (59)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1410896323
 Transform:
@@ -6449,12 +6695,12 @@ GameObject:
   - component: {fileID: 1412974044}
   - component: {fileID: 1412974043}
   - component: {fileID: 1412974042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (37)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1412974041
 Transform:
@@ -6599,12 +6845,12 @@ GameObject:
   - component: {fileID: 1449770015}
   - component: {fileID: 1449770014}
   - component: {fileID: 1449770013}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (25)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1449770012
 Transform:
@@ -6704,12 +6950,12 @@ GameObject:
   - component: {fileID: 1491225068}
   - component: {fileID: 1491225067}
   - component: {fileID: 1491225066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (18)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1491225065
 Transform:
@@ -6809,12 +7055,12 @@ GameObject:
   - component: {fileID: 1496070130}
   - component: {fileID: 1496070129}
   - component: {fileID: 1496070128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (22)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1496070127
 Transform:
@@ -7019,12 +7265,12 @@ GameObject:
   - component: {fileID: 1529216780}
   - component: {fileID: 1529216779}
   - component: {fileID: 1529216778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1529216777
 Transform:
@@ -7124,12 +7370,12 @@ GameObject:
   - component: {fileID: 1530915985}
   - component: {fileID: 1530915984}
   - component: {fileID: 1530915983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (26)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1530915982
 Transform:
@@ -7229,12 +7475,12 @@ GameObject:
   - component: {fileID: 1543932682}
   - component: {fileID: 1543932681}
   - component: {fileID: 1543932680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (47)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1543932679
 Transform:
@@ -7782,12 +8028,12 @@ GameObject:
   - component: {fileID: 1609777024}
   - component: {fileID: 1609777023}
   - component: {fileID: 1609777022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (1)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1609777021
 Transform:
@@ -8097,12 +8343,12 @@ GameObject:
   - component: {fileID: 1639534123}
   - component: {fileID: 1639534122}
   - component: {fileID: 1639534121}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (20)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1639534120
 Transform:
@@ -8202,12 +8448,12 @@ GameObject:
   - component: {fileID: 1721575282}
   - component: {fileID: 1721575281}
   - component: {fileID: 1721575280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (55)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1721575279
 Transform:
@@ -8307,12 +8553,12 @@ GameObject:
   - component: {fileID: 1753841221}
   - component: {fileID: 1753841220}
   - component: {fileID: 1753841219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (4)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1753841218
 Transform:
@@ -8408,6 +8654,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 71298974}
     m_Modifications:
+    - target: {fileID: 1555647257006693495, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_CurrentTrackingState
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: _oppositeHand
+      value: 
+      objectReference: {fileID: 1045970234}
     - target: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: _playerController
       value: 
@@ -8415,6 +8669,10 @@ PrefabInstance:
     - target: {fileID: 8870331230306880824, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_Name
       value: VR_Hand_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 9037512656753256850, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 9164604506741380206, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8466,6 +8724,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9164604506741380206, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
   m_PrefabInstance: {fileID: 1755614111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1755614113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2531455339656546774, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+  m_PrefabInstance: {fileID: 1755614111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed18427cd3415840a8ea2e2b466656d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1787304397
 GameObject:
   m_ObjectHideFlags: 0
@@ -8478,12 +8747,12 @@ GameObject:
   - component: {fileID: 1787304401}
   - component: {fileID: 1787304400}
   - component: {fileID: 1787304399}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (27)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1787304398
 Transform:
@@ -8616,12 +8885,12 @@ GameObject:
   - component: {fileID: 1797628841}
   - component: {fileID: 1797628840}
   - component: {fileID: 1797628839}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (49)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1797628838
 Transform:
@@ -8721,12 +8990,12 @@ GameObject:
   - component: {fileID: 1798398382}
   - component: {fileID: 1798398381}
   - component: {fileID: 1798398380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (42)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1798398379
 Transform:
@@ -8826,12 +9095,12 @@ GameObject:
   - component: {fileID: 1812629128}
   - component: {fileID: 1812629127}
   - component: {fileID: 1812629126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (34)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1812629125
 Transform:
@@ -8919,6 +9188,216 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812629124}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1818802046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1818802047}
+  - component: {fileID: 1818802050}
+  - component: {fileID: 1818802049}
+  - component: {fileID: 1818802048}
+  m_Layer: 8
+  m_Name: Climbable (64)
+  m_TagString: Climbable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1818802047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818802046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.17, z: -13.67}
+  m_LocalScale: {x: 1, y: 0.39074, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289723039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1818802048
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818802046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1818802049
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818802046}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a3737995ac6a0804fafdcd92c3dbbbfd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1818802050
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818802046}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1845897322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1845897323}
+  - component: {fileID: 1845897326}
+  - component: {fileID: 1845897325}
+  - component: {fileID: 1845897324}
+  m_Layer: 8
+  m_Name: Climbable (68)
+  m_TagString: Climbable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1845897323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845897322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.9000034, z: -13.67}
+  m_LocalScale: {x: 1, y: 0.39074, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289723039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1845897324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845897322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1845897325
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845897322}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a3737995ac6a0804fafdcd92c3dbbbfd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1845897326
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845897322}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1861035182
 GameObject:
   m_ObjectHideFlags: 0
@@ -8931,12 +9410,12 @@ GameObject:
   - component: {fileID: 1861035186}
   - component: {fileID: 1861035185}
   - component: {fileID: 1861035184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (9)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1861035183
 Transform:
@@ -9129,12 +9608,12 @@ GameObject:
   - component: {fileID: 1866923863}
   - component: {fileID: 1866923862}
   - component: {fileID: 1866923861}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (36)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1866923860
 Transform:
@@ -9234,12 +9713,12 @@ GameObject:
   - component: {fileID: 1882674114}
   - component: {fileID: 1882674113}
   - component: {fileID: 1882674112}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (24)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1882674111
 Transform:
@@ -9327,6 +9806,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882674110}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1897527189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1897527190}
+  - component: {fileID: 1897527193}
+  - component: {fileID: 1897527192}
+  - component: {fileID: 1897527191}
+  m_Layer: 8
+  m_Name: Climbable (66)
+  m_TagString: Climbable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1897527190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897527189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.27999687, z: -13.67}
+  m_LocalScale: {x: 1, y: 0.39074, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289723039}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1897527191
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897527189}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1897527192
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897527189}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a3737995ac6a0804fafdcd92c3dbbbfd, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1897527193
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897527189}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1907748069
 GameObject:
   m_ObjectHideFlags: 0
@@ -9339,12 +9923,12 @@ GameObject:
   - component: {fileID: 1907748073}
   - component: {fileID: 1907748072}
   - component: {fileID: 1907748071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (48)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1907748070
 Transform:
@@ -9444,12 +10028,12 @@ GameObject:
   - component: {fileID: 1909703951}
   - component: {fileID: 1909703950}
   - component: {fileID: 1909703949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (53)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1909703948
 Transform:
@@ -9549,12 +10133,12 @@ GameObject:
   - component: {fileID: 1922460996}
   - component: {fileID: 1922460995}
   - component: {fileID: 1922460994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (51)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1922460993
 Transform:
@@ -9659,7 +10243,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1964186328
 Transform:
@@ -9864,12 +10448,12 @@ GameObject:
   - component: {fileID: 2001977766}
   - component: {fileID: 2001977765}
   - component: {fileID: 2001977764}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (54)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2001977763
 Transform:
@@ -10037,12 +10621,12 @@ GameObject:
   - component: {fileID: 2074399556}
   - component: {fileID: 2074399555}
   - component: {fileID: 2074399554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (45)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2074399553
 Transform:
@@ -10216,8 +10800,8 @@ MonoBehaviour:
     m_Bits: 0
   playSpace: {fileID: 71298973}
   head: {fileID: 1075326987}
-  leftHand: {fileID: 1045970233}
-  rightHand: {fileID: 1755614112}
+  leftHand: {fileID: 1045970234}
+  rightHand: {fileID: 1755614113}
   _groundChecker: {fileID: 1417937302}
   playerData:
     name: 
@@ -10227,18 +10811,6 @@ MonoBehaviour:
     sneakSpeed: 0.25
     dashDistance: 0
     jumpVelocity: 5
-  leftJoystickDeadzoneAdjustment: 0.25
-  rightJoystickDeadzoneAdjustment: 0.5
-  turnSpeedAdjustment: 1
-  snapTurnRotationAdjustment: 45
-  isLeftHanded: 0
-  headOrientation: 0
-  snapTurnOn: 0
-  roomScale: 0
-  toggleGrip: 0
-  isStanding: 0
-  toggleSprint: 0
-  physicalJumping: 0
   isGrounded: 0
   isCrouched: 0
   isSprinting: 0
@@ -10254,6 +10826,18 @@ MonoBehaviour:
   isGhost: 0
   meditating: 0
   movementDisabled: 0
+  leftJoystickDeadzoneAdjustment: 0.25
+  rightJoystickDeadzoneAdjustment: 0.5
+  turnSpeedAdjustment: 1
+  snapTurnRotationAdjustment: 45
+  isLeftHanded: 0
+  headOrientation: 1
+  snapTurnOn: 0
+  roomScale: 0
+  toggleGrip: 0
+  isStanding: 1
+  toggleSprint: 0
+  physicalJumping: 0
 --- !u!54 &2097369054
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10328,12 +10912,12 @@ GameObject:
   - component: {fileID: 2120879713}
   - component: {fileID: 2120879712}
   - component: {fileID: 2120879711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (33)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2120879710
 Transform:
@@ -10433,12 +11017,12 @@ GameObject:
   - component: {fileID: 2122969105}
   - component: {fileID: 2122969104}
   - component: {fileID: 2122969103}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (35)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2122969102
 Transform:
@@ -10540,7 +11124,7 @@ GameObject:
   - component: {fileID: 2124716955}
   m_Layer: 3
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10643,12 +11227,12 @@ GameObject:
   - component: {fileID: 2130328561}
   - component: {fileID: 2130328560}
   - component: {fileID: 2130328559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Climbable (13)
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2130328558
 Transform:

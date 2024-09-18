@@ -14,8 +14,9 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public GameObject playSpace;
 
-    public Transform
-        head,
+    public Transform head;
+
+    public VRHandController
         leftHand,
         rightHand;
 
@@ -24,45 +25,23 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public PlayerData playerData;
 
-    // -------------- PLAYER SETTINGS --------------------
-
-    [HideInInspector]
-    public float
-        leftJoystickDeadzoneAdjustment = 0.25f,
-        rightJoystickDeadzoneAdjustment = 0.5f,
-        turnSpeedAdjustment = 1f,
-        snapTurnRotationAdjustment = 45;
-
     [HideInInspector]
     public bool
-        isLeftHanded,
-        headOrientation = true,
-        snapTurnOn,
-        roomScale,
-        toggleGrip,
-        isStanding = true,
-        toggleSprint,
-        physicalJumping;
-
-    // ----------------------------------------------------
-
-    [HideInInspector]
-    public bool
-    isGrounded,
-    isCrouched,
-    isSprinting,
-    heightCheck,
-    disableMovement,
-    sprintEnabled,
-    jumpControllerOn,
-    climbOn,
-    canFly,
-    playerCalibrationOn,
-    playerHandAdjusterOn,
-    playerMoving,
-    isGhost,
-    meditating,
-    movementDisabled;
+        isGrounded,
+        isCrouched,
+        isSprinting,
+        heightCheck,
+        disableMovement,
+        sprintEnabled,
+        jumpControllerOn,
+        climbOn,
+        canFly,
+        playerCalibrationOn,
+        playerHandAdjusterOn,
+        playerMoving,
+        isGhost,
+        meditating,
+        movementDisabled;
 
     public Rigidbody playerRB { get; set; }
     public CapsuleCollider playerCollider { get; set; }
@@ -78,9 +57,34 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     Transform playerOrientation;
 
-    public Animator sittingPlayerAnim { get; set; }
+    List<Vector3> _playerBodyTracking = new List<Vector3>();
 
-    //dash controls
+    //public Animator sittingPlayerAnim { get; set; }
+
+    // -------------- PLAYER SETTINGS --------------------
+
+    [HideInInspector]
+    public float
+        leftJoystickDeadzoneAdjustment = 0.25f,
+        rightJoystickDeadzoneAdjustment = 0.5f,
+        turnSpeedAdjustment = 1f,
+        snapTurnRotationAdjustment = 45;
+
+    //[HideInInspector]
+    public bool
+        isLeftHanded,
+        headOrientation = true,
+        snapTurnOn,
+        roomScale,
+        toggleGrip,
+        isStanding = true,
+        toggleSprint,
+        physicalJumping;
+
+    // ----------------------------------------------------
+
+    // ---------------- Dash Variables -------------------
+
     bool
         setDashCooldown,
         canDash,
@@ -97,6 +101,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         forwardMovement,
         rightMovement;
 
+    // ------------------------------------------------------
 
     public override void Awake()
     {
@@ -104,7 +109,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         playerRB = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
-        sittingPlayerAnim = GetComponent<Animator>();
+        //sittingPlayerAnim = GetComponent<Animator>();
         playerOrientation = head;
     }
 
@@ -126,6 +131,18 @@ public class PlayerController : MonoSingleton<PlayerController>
     void FixedUpdate()
     {
         PlayerColliderTracking();
+    }
+
+    void Update()
+    {
+        // Tracks the last 15 positions of the players body while climbing
+        if (leftHand.isClimbing || rightHand.isClimbing)
+        {
+            if (_playerBodyTracking.Count > 60)
+                _playerBodyTracking.RemoveAt(0);
+
+            _playerBodyTracking.Add(transform.position);
+        }
     }
 
     void LateUpdate()
@@ -252,8 +269,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (heightCheck)
         {
             playSpace.transform.localPosition = new Vector3(0, 0, 0);
-            sittingPlayerAnim.SetBool("isCrouched", false);
-            sittingPlayerAnim.enabled = false;
+            //sittingPlayerAnim.SetBool("isCrouched", false);
+            //sittingPlayerAnim.enabled = false;
             heightCheck = false;
         }
 
@@ -271,19 +288,19 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         if (heightCheck)
         {
-            sittingPlayerAnim.enabled = true;
+            //sittingPlayerAnim.enabled = true;
             heightCheck = false;
         }
 
         if (!isCrouched)
         {
-            sittingPlayerAnim.SetBool("isCrouched", true);
+            //sittingPlayerAnim.SetBool("isCrouched", true);
             Crouch(true);
         }
 
         else if (isCrouched)
         {
-            sittingPlayerAnim.SetBool("isCrouched", false);
+            //sittingPlayerAnim.SetBool("isCrouched", false);
             Crouch(false);
         }
     }
@@ -410,6 +427,16 @@ public class PlayerController : MonoSingleton<PlayerController>
 
         if (floatPlayer)
             playerRB.velocity = playerRB.velocity + new Vector3(0, 10, 0);
+    }
+
+    public void ThrowPlayerBody()
+    {
+        Debug.Log("Throw Player from climb");
+
+        Vector3 direction = _playerBodyTracking[_playerBodyTracking.Count - 1] - _playerBodyTracking[0];
+        playerRB.AddForce(direction * 100000);
+
+        _playerBodyTracking.Clear();
     }
 
     public void OrientationSource()

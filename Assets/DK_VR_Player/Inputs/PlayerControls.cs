@@ -83,21 +83,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""GrabLeft"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""0421a26c-ed9b-4514-84d2-074e571549df"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""GrabRight"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""e8a311b8-72dd-427b-8585-261e0ef44ad8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""TriggerLeft"",
@@ -110,35 +110,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""TriggerRight"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""03c92b80-e719-4ebd-a7d7-82a75ce431fb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Menu"",
                     ""type"": ""Button"",
                     ""id"": ""357e7cf8-8e6e-439d-9a86-695418d3733c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""GrabActionLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""e0010581-1654-47e6-8b84-b4f86aaa71a4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""GrabActionRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""2ac9217a-824b-45d4-a0c0-8f0a0bc3857e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -288,61 +270,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e7fde9fd-7ab2-48ca-905c-1ac49c840e71"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GrabActionLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""bdf20d64-eda2-444d-a283-5ad5e03635e8"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GrabActionLeft"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""ac382af4-3caa-496c-ba63-fa0b5a528611"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GrabActionLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""384c27a1-5a7d-4f50-8be3-9daaf5773e69"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GrabActionLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8b98731c-c930-4be7-9ac9-8b1e88e4d50d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""GrabActionRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -362,8 +289,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_BasicControls_TriggerLeft = m_BasicControls.FindAction("TriggerLeft", throwIfNotFound: true);
         m_BasicControls_TriggerRight = m_BasicControls.FindAction("TriggerRight", throwIfNotFound: true);
         m_BasicControls_Menu = m_BasicControls.FindAction("Menu", throwIfNotFound: true);
-        m_BasicControls_GrabActionLeft = m_BasicControls.FindAction("GrabActionLeft", throwIfNotFound: true);
-        m_BasicControls_GrabActionRight = m_BasicControls.FindAction("GrabActionRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -436,8 +361,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_BasicControls_TriggerLeft;
     private readonly InputAction m_BasicControls_TriggerRight;
     private readonly InputAction m_BasicControls_Menu;
-    private readonly InputAction m_BasicControls_GrabActionLeft;
-    private readonly InputAction m_BasicControls_GrabActionRight;
     public struct BasicControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -453,8 +376,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @TriggerLeft => m_Wrapper.m_BasicControls_TriggerLeft;
         public InputAction @TriggerRight => m_Wrapper.m_BasicControls_TriggerRight;
         public InputAction @Menu => m_Wrapper.m_BasicControls_Menu;
-        public InputAction @GrabActionLeft => m_Wrapper.m_BasicControls_GrabActionLeft;
-        public InputAction @GrabActionRight => m_Wrapper.m_BasicControls_GrabActionRight;
         public InputActionMap Get() { return m_Wrapper.m_BasicControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -497,12 +418,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
-            @GrabActionLeft.started += instance.OnGrabActionLeft;
-            @GrabActionLeft.performed += instance.OnGrabActionLeft;
-            @GrabActionLeft.canceled += instance.OnGrabActionLeft;
-            @GrabActionRight.started += instance.OnGrabActionRight;
-            @GrabActionRight.performed += instance.OnGrabActionRight;
-            @GrabActionRight.canceled += instance.OnGrabActionRight;
         }
 
         private void UnregisterCallbacks(IBasicControlsActions instance)
@@ -540,12 +455,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
-            @GrabActionLeft.started -= instance.OnGrabActionLeft;
-            @GrabActionLeft.performed -= instance.OnGrabActionLeft;
-            @GrabActionLeft.canceled -= instance.OnGrabActionLeft;
-            @GrabActionRight.started -= instance.OnGrabActionRight;
-            @GrabActionRight.performed -= instance.OnGrabActionRight;
-            @GrabActionRight.canceled -= instance.OnGrabActionRight;
         }
 
         public void RemoveCallbacks(IBasicControlsActions instance)
@@ -576,7 +485,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnTriggerLeft(InputAction.CallbackContext context);
         void OnTriggerRight(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
-        void OnGrabActionLeft(InputAction.CallbackContext context);
-        void OnGrabActionRight(InputAction.CallbackContext context);
     }
 }
