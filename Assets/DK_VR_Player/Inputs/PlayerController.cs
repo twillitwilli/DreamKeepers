@@ -7,7 +7,7 @@ using SoT.AbstractClasses;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(InputController))]
 
-public class PlayerController : MonoSingleton<PlayerController>
+public sealed class PlayerController : MonoSingleton<PlayerController>
 {
     [SerializeField]
     LayerMask _ignoreLayers;
@@ -130,7 +130,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     void FixedUpdate()
     {
-        PlayerColliderTracking();
+        PlayerBodyTracker();
     }
 
     void Update()
@@ -168,19 +168,15 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
-    void PlayerColliderTracking()
-    {
-        Vector3 colliderCenter = Vector3.zero;
+    // -------------------------------- Movement Controls ----------------------------------
 
-        if (isStanding)
+    public void Jump()
+    {
+        if (!isCrouched && _groundChecker.GroundCheck())
         {
-            float headHeight = Mathf.Clamp(head.localPosition.y, 1 / 2, 2);
-            playerCollider.height = headHeight;
-            colliderCenter.y = playerCollider.height / 2;
+            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
+            isGrounded = false;
         }
-        colliderCenter.x = head.localPosition.x;
-        colliderCenter.z = head.localPosition.z;
-        playerCollider.center = colliderCenter;
     }
 
     public void Movement(Vector2 pos)
@@ -206,7 +202,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             Vector3 forward = Vector3.Normalize(playerOrientation.transform.forward - new Vector3(0, playerOrientation.transform.forward.y, 0));
 
             //Player Movement (forward and back)
-            if (Mathf.Abs(pos.y) >= leftJoystickDeadzoneAdjustment && MovementCheck(transform.position + forward * playerMovement * pos.y * Time.deltaTime))
+            if (Mathf.Abs(pos.y) >= leftJoystickDeadzoneAdjustment && CanMoveInDirection(transform.position + forward * playerMovement * pos.y * Time.deltaTime))
             {
                 playerMoving = true;
                 transform.position += forward * playerMovement * pos.y * Time.deltaTime;
@@ -216,7 +212,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             Vector3 right = Vector3.Normalize(playerOrientation.transform.right - new Vector3(0, playerOrientation.transform.right.y, 0));
 
             //Player Movement (side to side)
-            if (Mathf.Abs(pos.x) >= leftJoystickDeadzoneAdjustment && MovementCheck(transform.position + right * playerMovement * pos.x * Time.deltaTime))
+            if (Mathf.Abs(pos.x) >= leftJoystickDeadzoneAdjustment && CanMoveInDirection(transform.position + right * playerMovement * pos.x * Time.deltaTime))
             {
                 playerMoving = true;
                 transform.position += right * playerMovement * pos.x * Time.deltaTime;
@@ -228,13 +224,13 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
-    public bool MovementCheck(Vector3 movePos)
+    bool CanMoveInDirection(Vector3 movePos)
     {
         RaycastHit hit;
 
         if (Physics.Raycast(transform.TransformPoint(playerCollider.center), movePos - transform.position, out hit, collisionRange, -_ignoreLayers))
         {
-            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Rock"))
+            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall"))
                 return false;
         }
 
@@ -253,8 +249,13 @@ public class PlayerController : MonoSingleton<PlayerController>
             else if (snapTurnOn && canSnapTurn)
             {
                 float snapValue = 0.0f;
-                if (pos.x >= rightJoystickDeadzoneAdjustment) { snapValue = Mathf.Abs(snapTurnRotationAdjustment); }
-                else if (pos.x <= -rightJoystickDeadzoneAdjustment) { snapValue = -Mathf.Abs(snapTurnRotationAdjustment); }
+
+                if (pos.x >= rightJoystickDeadzoneAdjustment) 
+                    snapValue = Mathf.Abs(snapTurnRotationAdjustment);
+
+                else if (pos.x <= -rightJoystickDeadzoneAdjustment) 
+                    snapValue = -Mathf.Abs(snapTurnRotationAdjustment);
+
                 transform.RotateAround(head.position, Vector3.up, snapValue);
                 canSnapTurn = false;
             }
@@ -262,6 +263,155 @@ public class PlayerController : MonoSingleton<PlayerController>
             if (!canSnapTurn && pos.x < rightJoystickDeadzoneAdjustment && pos.x > -rightJoystickDeadzoneAdjustment)
                 canSnapTurn = true;
         }
+    }
+
+    void Crouch(bool crouched)
+    {
+        if (crouched)
+        {
+            if (isSprinting) { playerMovement = playerData.walkSpeed; }
+            isSprinting = false;
+            CrouchSpeedReduction();
+
+            //stop movement audio
+
+            isCrouched = true;
+        }
+
+        else
+        {
+            playerMovement = playerData.walkSpeed;
+            isCrouched = false;
+            ChangeMovementSFX();
+        }
+    }
+
+    void CrouchSpeedReduction()
+    {
+        playerMovement = playerMovement / playerData.sneakSpeedReduction;
+        crouchSpeedSet = true;
+    }
+
+    public void Sprint()
+    {
+        if (!isCrouched && playerMovement == playerData.walkSpeed && !isSprinting)
+        {
+            isSprinting = true;
+            ChangeMovementSFX();
+            playerMovement = playerMovement * playerData.sprintSpeedMultiplier;
+        }
+    }
+
+    // --------------------- Dash Functions ------------------------
+
+    public void Dash()
+    {
+        if (!isCrouched && playerMoving && canDash)
+        {
+            //_playerStats.iFrame = true;
+
+            if (Mathf.Abs(leftJoystickPos.y) >= leftJoystickDeadzoneAdjustment)
+                dashPos = DashDistanceCheck(transform.position + (forwardMovement * playerData.dashDistance * leftJoystickPos.y));
+
+            else if (Mathf.Abs(leftJoystickPos.x) >= leftJoystickDeadzoneAdjustment)
+                dashPos = DashDistanceCheck(transform.position + (rightMovement * playerData.dashDistance * leftJoystickPos.x));
+
+            //_playerComponents.dashEffect.gameObject.SetActive(true);
+            //_playerComponents.dashEffect.transform.localPosition = new Vector3(leftJoystickPos.x, 0, leftJoystickPos.y);
+
+            //dash sound effect here
+
+            transform.position = dashPos;
+            canDash = false;
+            setDashCooldown = true;
+            runDashCooldown = true;
+        }
+    }
+
+    Vector3 DashDistanceCheck(Vector3 dashPosition)
+    {
+        RaycastHit hit;
+        float range = Vector3.Distance(dashPosition, transform.position);
+
+        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), dashPosition - transform.position, out hit, range, -_ignoreLayers))
+        {
+            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall"))
+                return hit.point + (transform.position - dashPosition).normalized * collisionRange;
+        }
+
+        return dashPosition;
+    }
+
+    bool DashCooldown()
+    {
+        if (setDashCooldown)
+        {
+            cooldownTimer = dashCooldownTime;
+            setDashCooldown = false;
+        }
+
+        if (cooldownTimer > 0)
+            cooldownTimer -= Time.deltaTime;
+
+        else if (cooldownTimer <= 0)
+        {
+            cooldownTimer = 0;
+            //_playerComponents.dashEffect.gameObject.SetActive(false);
+            //_playerComponents.visualDashReadyEffect.SetActive(true);
+            runDashCooldown = false;
+            return true;
+        }
+
+        return false;
+    }
+
+    // --------------------------------------------------------------
+
+    public void FlightController(bool jumpButtonDown)
+    {
+        if (jumpButtonDown)
+        {
+            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
+            floatPlayer = true;
+        }
+
+        else
+            floatPlayer = false;
+
+        if (floatPlayer)
+            playerRB.velocity = playerRB.velocity + new Vector3(0, 10, 0);
+    }
+
+    // -------------------------------------------------------------------------------------
+
+    // ----------------------------- Physics & Tracking ------------------------------------
+
+    public void OrientationSource()
+    {
+        // Headset Orientation
+        if (headOrientation)
+            playerOrientation = head;
+
+        // Controller Orientation
+        else if (!headOrientation)
+            playerOrientation = leftHand.transform;
+    }
+
+    // Keeps player body collider under the head position
+    void PlayerBodyTracker()
+    {
+        Vector3 colliderCenter = Vector3.zero;
+
+        if (isStanding)
+        {
+            float headHeight = Mathf.Clamp(head.localPosition.y, 1 / 2, 2);
+            playerCollider.height = headHeight;
+            colliderCenter.y = playerCollider.height / 2;
+        }
+
+        colliderCenter.x = head.localPosition.x;
+        colliderCenter.z = head.localPosition.z;
+        playerCollider.center = colliderCenter;
     }
 
     void StandingController()
@@ -305,150 +455,21 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
     }
 
-    void Crouch(bool crouched)
-    {
-        if (crouched)
-        {
-            if (isSprinting) { playerMovement = playerData.walkSpeed; }
-            isSprinting = false;
-            CrouchSpeedReduction();
-
-            //stop movement audio
-
-            isCrouched = true;
-        }
-
-        else
-        {
-            playerMovement = playerData.walkSpeed;
-            isCrouched = false;
-            ChangeMovementSFX();
-        }
-    }
-
-    void CrouchSpeedReduction()
-    {
-        playerMovement = playerMovement / playerData.sneakSpeed;
-        crouchSpeedSet = true;
-    }
-
-    void Sprint()
-    {
-        if (!isCrouched && playerMovement == playerData.walkSpeed && !isSprinting)
-        {
-            isSprinting = true;
-            ChangeMovementSFX();
-            playerMovement = playerMovement * playerData.sprintSpeed;
-        }
-    }
-
-    public bool DashCooldown()
-    {
-        if (setDashCooldown)
-        {
-            cooldownTimer = dashCooldownTime;
-            setDashCooldown = false;
-        }
-
-        if (cooldownTimer > 0)
-            cooldownTimer -= Time.deltaTime;
-
-        else if (cooldownTimer <= 0)
-        {
-            cooldownTimer = 0;
-            //_playerComponents.dashEffect.gameObject.SetActive(false);
-            //_playerComponents.visualDashReadyEffect.SetActive(true);
-            runDashCooldown = false;
-            return true;
-        }
-
-        return false;
-    }
-
-    public void DashController(bool dashButton)
-    {
-        if (!isCrouched && playerMoving && canDash && dashButton)
-        {
-            //_playerStats.iFrame = true;
-
-            if (Mathf.Abs(leftJoystickPos.y) >= leftJoystickDeadzoneAdjustment)
-                dashPos = DashDistanceCheck(transform.position + (forwardMovement * playerData.dashDistance * leftJoystickPos.y));
-
-            else if (Mathf.Abs(leftJoystickPos.x) >= leftJoystickDeadzoneAdjustment)
-                dashPos = DashDistanceCheck(transform.position + (rightMovement * playerData.dashDistance * leftJoystickPos.x));
-
-            //_playerComponents.dashEffect.gameObject.SetActive(true);
-            //_playerComponents.dashEffect.transform.localPosition = new Vector3(leftJoystickPos.x, 0, leftJoystickPos.y);
-
-            //dash sound effect here
-
-            transform.position = dashPos;
-            canDash = false;
-            setDashCooldown = true;
-        }
-
-        else if (!canDash && !dashButton)
-            runDashCooldown = true;
-    }
-
-    public Vector3 DashDistanceCheck(Vector3 dashPosition)
-    {
-        RaycastHit hit;
-        float range = Vector3.Distance(dashPosition, transform.position);
-
-        if (Physics.Raycast(transform.TransformPoint(playerCollider.center), dashPosition - transform.position, out hit, range, -_ignoreLayers))
-        {
-            if (hit.collider.CompareTag("Ground") || hit.collider.CompareTag("Wall"))
-                return hit.point + (transform.position - dashPosition).normalized * collisionRange;
-        }
-
-        return dashPosition;
-    }
-
-    public void Jump()
-    {
-        if (!isCrouched && _groundChecker.GroundCheck())
-        {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
-            isGrounded = false;
-        }
-    }
-
-    public void FlightController(bool jumpButtonDown)
-    {
-        if (jumpButtonDown)
-        {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
-            floatPlayer = true;
-        }
-
-        else
-            floatPlayer = false;
-
-        if (floatPlayer)
-            playerRB.velocity = playerRB.velocity + new Vector3(0, 10, 0);
-    }
-
     public void ThrowPlayerBody()
     {
         Debug.Log("Throw Player from climb");
 
+        // Get the direction the player body will be thrown
         Vector3 direction = _playerBodyTracking[_playerBodyTracking.Count - 1] - _playerBodyTracking[0];
+
+        // Add force in the direction the player will be thrown
         playerRB.AddForce(direction * 100000);
 
+        // Clear the player body tracking list 
         _playerBodyTracking.Clear();
     }
 
-    public void OrientationSource()
-    {
-        // Headset Orientation
-        if (headOrientation)
-            playerOrientation = head;
-
-        // Controller Orientation
-        else if (!headOrientation)
-            playerOrientation = leftHand.transform;
-    }
+    // --------------------------------------------------------------------------------------
 
     private void ChangeMovementSFX()
     {
@@ -458,16 +479,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
             else if (isSprinting) { } //runnning sfx
         }
-    }
-
-    public void ClimbingCheck()
-    {
-        //if (climbOn && !_playerComponents.GetHand(0).GetClimbController().IsClimbing() && !_playerComponents.GetHand(1).GetClimbController().IsClimbing())
-        //{
-        //    disableMovement = false;
-        //    playerCollider.enabled = true;
-        //    playerRB.useGravity = true;
-        //}
     }
 
     public void DefaultPlayerSettings()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VRHandController : MonoBehaviour
+public sealed class VRHandController : MonoBehaviour
 {
     [SerializeField]
     PlayerController _playerController;
@@ -59,6 +59,8 @@ public class VRHandController : MonoBehaviour
             Climbing();
     }
 
+    // ------------------------------------ Grab Functions -------------------------------------
+
     public void GrabObject(bool grab)
     {
         // If there is no physical object to grab
@@ -86,6 +88,10 @@ public class VRHandController : MonoBehaviour
             else ReleaseClimb();
         }
     }
+
+    // ------------------------------------------------------------------------------------------
+
+    // ---------------------------------- Throwable Functions -----------------------------------
 
     void GrabThrowableObject()
     {
@@ -133,6 +139,9 @@ public class VRHandController : MonoBehaviour
         currentGrabableRB = null;
     }
 
+    // -------------------------------------------------------------------------------------------
+
+    // ----------------------------------- Climbing Functions ------------------------------------
     public void TogglePhysicalGrabTrigger(bool on)
     {
         _physicalGrabTrigger.gameObject.SetActive(on);
@@ -207,4 +216,6 @@ public class VRHandController : MonoBehaviour
         // Last climbing position
         _climbablePrevPos = _climbableObject.position;
     }
+
+    // --------------------------------------------------------------------------------------------
 }

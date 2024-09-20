@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundChecker : MonoBehaviour
+public sealed class GroundChecker : MonoBehaviour
 {
     [SerializeField]
     PlayerController _player;
@@ -19,13 +19,13 @@ public class GroundChecker : MonoBehaviour
 
         foreach (Collider col in groundobjects)
         {
-            if (col.gameObject.CompareTag("Ground") || col.gameObject.CompareTag("Rock"))
+            if (col.gameObject.CompareTag("Ground"))
                 return true;
         }
         return false;
     }
 
-    public void PositionUnderHead()
+    void PositionUnderHead()
     {
         //world space
         Vector3 xyValue = new Vector3();

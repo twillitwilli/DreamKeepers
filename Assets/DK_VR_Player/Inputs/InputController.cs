@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputController : MonoBehaviour
+public sealed class InputController : MonoBehaviour
 {
     PlayerController _playerController;
 
@@ -46,6 +46,8 @@ public class InputController : MonoBehaviour
 
     void OnDash()
     {
+        _playerController.Dash();
+
         Debug.Log("Dash");
     }
 
@@ -53,12 +55,14 @@ public class InputController : MonoBehaviour
     {
         bool crouch = _playerController.isCrouched ? false : true;
         _playerController.isCrouched = crouch;
+
         Debug.Log("is crouched = " + _playerController.isCrouched);
     }
 
     void OnSprint()
     {
-        _playerController.isSprinting = true;
+        _playerController.Sprint();
+
         Debug.Log("Sprinting On");
     }
 
@@ -66,16 +70,12 @@ public class InputController : MonoBehaviour
     {
         bool grabbing = value.Get<float>() == 0 ? false : true;
 
-        Debug.Log("Grab Left" + grabbing);
-
         _leftHandController.TogglePhysicalGrabTrigger(grabbing);
     }
 
     void OnGrabRight(InputValue value)
     {
         bool grabbing = value.Get<float>() == 0 ? false : true;
-
-        Debug.Log("Grab Right" + grabbing);
 
         _rightHandController.TogglePhysicalGrabTrigger(grabbing);
     }
@@ -97,15 +97,5 @@ public class InputController : MonoBehaviour
     void OnMenu()
     {
         Debug.Log("Menu");
-    }
-
-    void OnGrabActionLeft()
-    {
-        Debug.Log("Grab action left");
-    }
-
-    void OnGrabActionRight()
-    {
-        Debug.Log("Grab action right");
     }
 }

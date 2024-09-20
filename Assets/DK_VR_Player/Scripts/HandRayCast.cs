@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandRayCast : MonoBehaviour
+public sealed class HandRayCast : MonoBehaviour
 {
     [SerializeField]
     VRHandController _hand;

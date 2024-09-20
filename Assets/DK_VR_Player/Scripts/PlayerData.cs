@@ -4,10 +4,10 @@ public class PlayerData
     public string name;
     public int maxHealth;
 
-    public float 
+    public float
         walkSpeed,
-        sprintSpeed,
-        sneakSpeed,
+        sprintSpeedMultiplier,
+        sneakSpeedReduction,
         dashDistance,
         jumpVelocity;
 }
