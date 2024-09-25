@@ -13,6 +13,9 @@ public sealed class VRHandController : MonoBehaviour
     [SerializeField]
     PhysicalGrabTrigger _physicalGrabTrigger;
 
+    [SerializeField]
+    HandAnimatorController _handAnimator;
+
     // ---------------- Throwable Variables -----------------
 
     [SerializeField]
@@ -25,7 +28,9 @@ public sealed class VRHandController : MonoBehaviour
     public float throwVelocity = 1000f;
 
     public GameObject currentGrabable { get; private set; }
-    Rigidbody currentGrabableRB;
+    Rigidbody _currentGrabableRB;
+    Throwable _currentThrowable;
+
 
     // ---------------------------------------------------------
 
@@ -70,12 +75,14 @@ public sealed class VRHandController : MonoBehaviour
             if (grab && currentGrabable == null && _handRayCast._currentGrabableTarget != null)
             {
                 GrabThrowableObject();
+                _handAnimator.ChangeAnimation("TelekineticHold");
             }
 
             // Drop Object
             else if (!grab && currentGrabable != null)
             {
                 ThrowObject();
+                _handAnimator.ChangeAnimation("Idle");
             }
         }
         
@@ -83,9 +90,16 @@ public sealed class VRHandController : MonoBehaviour
         else
         {
             if (grab)
+            {
                 Climb();
+                _handAnimator.ChangeAnimation("TelekineticHold");
+            }
 
-            else ReleaseClimb();
+            else
+            {
+                ReleaseClimb();
+                _handAnimator.ChangeAnimation("Idle");
+            }
         }
     }
 
@@ -97,6 +111,7 @@ public sealed class VRHandController : MonoBehaviour
     {
         // Turn off visual grab effect & reset raycast target
         currentGrabable = _handRayCast._currentGrabableTarget;
+        _currentThrowable = currentGrabable.GetComponent<Throwable>();
         _handRayCast.TurnOffHitEffect();
         _handRayCast.ResetTarget();
 
@@ -105,9 +120,9 @@ public sealed class VRHandController : MonoBehaviour
             _oppositeHand.GrabObject(false);
 
         // Get RB and adjust settings
-        currentGrabableRB = currentGrabable.GetComponent<Rigidbody>();
-        currentGrabableRB.useGravity = false;
-        currentGrabableRB.isKinematic = true;
+        _currentGrabableRB = currentGrabable.GetComponent<Rigidbody>();
+        _currentGrabableRB.useGravity = false;
+        _currentGrabableRB.isKinematic = true;
 
         // Set grabable trigger to true to avoid player collisions
         currentGrabable.GetComponent<Collider>().isTrigger = true;
@@ -122,21 +137,26 @@ public sealed class VRHandController : MonoBehaviour
     {
         // Unparent object from hand
         currentGrabable.transform.SetParent(null);
-        currentGrabableRB.isKinematic = false;
+        _currentGrabableRB.isKinematic = false;
 
         // Get direction & add force to the object being thrown
         Vector3 direction = _handTrackingPos[_handTrackingPos.Count - 1] - _handTrackingPos[0];
-        currentGrabableRB.AddForce(direction * throwVelocity);
+        _currentGrabableRB.AddForce(direction * throwVelocity);
+
+        //Get throwable velocity
+        _currentThrowable.throwableVelocity = Vector3.Magnitude(direction * throwVelocity);
+        Debug.Log("Throwable velocity = " + _currentThrowable.throwableVelocity);
 
         // Reset RB settings
-        currentGrabableRB.useGravity = true;
+        _currentGrabableRB.useGravity = true;
 
         // Turn collider trigger off
         currentGrabable.GetComponent<Collider>().isTrigger = false;
 
         // Reset grabable data on hand
         currentGrabable = null;
-        currentGrabableRB = null;
+        _currentGrabableRB = null;
+        _currentThrowable = null;
     }
 
     // -------------------------------------------------------------------------------------------
