@@ -22,12 +22,16 @@ public class Throwable : MonoBehaviour
 
     void BreakObject()
     {
+        // If there is a breakable effect this is where it how it will spawn
         if (_breakableEffect != null)
         {
+            // Spawn Effect
             GameObject breakableObj = Instantiate(_breakableEffect);
 
+            // Set Parent to null so it doesnt get destroyed with this object
             breakableObj.transform.SetParent(null);
 
+            // Set position to the position where this is at upon breaking
             breakableObj.transform.position = transform.position;
         }
 
