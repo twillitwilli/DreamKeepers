@@ -9,7 +9,6 @@ public class Chest : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _animator.StopPlayback();
     }
 
     public void OpenChest()
