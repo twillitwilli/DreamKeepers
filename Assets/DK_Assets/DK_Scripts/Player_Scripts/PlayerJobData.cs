@@ -40,6 +40,8 @@ public class PlayerJobData : MonoSingleton<PlayerJobData>
                 if (LevelUpCheck(lumberjackExp))
                 {
                     Debug.Log("Lumberjack Level Up");
+                    lumberjackLevel++;
+                    lumberjackExp = 0;
                 }
 
                 break;

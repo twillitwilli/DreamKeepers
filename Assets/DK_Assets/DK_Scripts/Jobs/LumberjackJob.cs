@@ -35,5 +35,6 @@ public class LumberjackJob : Job
         base.JobComplete();
 
         PlayerJobData.Instance.LevelUp(PlayerJobData.PlayerJobs.Lumberjack, experienceReward);
+        PlayerStats.Instance.AdjustGold(goldReward);
     }
 }
