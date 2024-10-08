@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerScreenEffects : MonoBehaviour
@@ -12,29 +13,45 @@ public class PlayerScreenEffects : MonoBehaviour
 
     bool _headInsideObject;
 
+    // Check to see if head enters an object
     private void OnTriggerEnter(Collider other)
     {
         if (!_headInsideObject && other.gameObject.CompareTag("Wall"))
         {
             _headInsideObject = true;
-            _playerController.disableMovement = true;
-            _blindnessAnimator.gameObject.SetActive(true);
-            _blindnessAnimator.Play("FadeVisionOut");
+            CloseVision();
         }
     }
 
+    // Checks to see if head leaves an object
     private void OnTriggerExit(Collider other)
     {
         if (_headInsideObject && other.gameObject.CompareTag("Wall"))
         {
             _headInsideObject = false;
-            _playerController.disableMovement = false;
-            _blindnessAnimator.Play("FadeVisionIn");
+            ClearVision();
         }
     }
 
-    public void BlindnessVisionClear()
+    public void CloseVision()
     {
+        // Disable movement if vision is closing
+        _playerController.disableMovement = true;
+
+        // Enable & Close Vision
+        _blindnessAnimator.gameObject.SetActive(true);
+        _blindnessAnimator.Play("CloseVision");
+    }
+
+    public async void ClearVision()
+    {
+        // Play animation to clear vision
+        _blindnessAnimator.Play("ClearVision");
+
+        // wait 3 seconds before disabling visual gameobject and enabling movement
+        await Task.Delay(3000);
         _blindnessAnimator.gameObject.SetActive(false);
+
+        _playerController.disableMovement = false;
     }
 }

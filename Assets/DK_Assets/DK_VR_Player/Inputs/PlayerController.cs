@@ -105,6 +105,9 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
 
     public override void Awake()
     {
+        if (Instance != null)
+            Destroy(gameObject);
+
         base.Awake();
 
         playerRB = GetComponent<Rigidbody>();
