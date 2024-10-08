@@ -2029,6 +2029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e3f968fec655354eb4ee2da05b706e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManagerPrefab: {fileID: 4522621083581181276, guid: 735017078bbce714ea18c3228649fe4e, type: 3}
+  _playerPrefab: {fileID: 3511015691991822436, guid: 27e874bab9316ce40a3da7d1b2f9a218, type: 3}
   spawnLocations:
   - spawnName: Namik Village
     spawnLocation: {fileID: 7211073335404060651}

@@ -16,8 +16,39 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         NamikCanyon
     }
 
+    SceneSelection _currentScene;
+
+    string GetSceneName()
+    {
+        switch (_currentScene)
+        {
+            case SceneSelection.TitleScreen:
+                return "Dream Keepers";
+
+            case SceneSelection.NightmareNamikVillage:
+                return "Namik Village";
+
+            case SceneSelection.NamikVillage:
+                return "Namik Village";
+
+            case SceneSelection.TeleportNexus:
+                return "Teleport Nexus";
+
+            case SceneSelection.NamikCanyon:
+                return "Namik Canyon";
+        }
+
+        return "Error: No Name Found";
+    }
+
     public async void ChangeScene(SceneSelection whichScene)
     {
+        // changes new scene to current scene
+        _currentScene = whichScene;
+
+        // sets the name of the new area
+        DKGameManager.Instance.nameOfCurrentArea = GetSceneName();
+
         // Closes Players Vision
         PlayerController.Instance.head.GetComponent<PlayerScreenEffects>().CloseVision();
 
@@ -27,4 +58,6 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         // casts enum to an int to change to scene in the build list
         SceneManager.LoadScene((int)whichScene);
     }
+
+
 }

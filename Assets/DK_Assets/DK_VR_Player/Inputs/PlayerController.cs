@@ -501,7 +501,8 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
 
     void PlayerBounds()
     {
+        // If player goes outside of these bounds they will be moved back to the current scene spawn point
         if (transform.position.y < -1500 || transform.position.y > 1500)
-            Debug.Log("Player Bounds Not Set");
+            transform.position = SceneSpawnLocations.Instance.spawnLocations[DKGameManager.Instance.spawnLocation].spawnLocation.position;
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScreenEffects : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class PlayerScreenEffects : MonoBehaviour
     PlayerController _playerController;
 
     [SerializeField]
-    Animator _blindnessAnimator;
+    Animator
+        _blindnessAnimator,
+        _onScreenTextAnimator;
+
+    [SerializeField]
+    Text _onScreenText;
 
     bool _headInsideObject;
 
@@ -53,5 +59,21 @@ public class PlayerScreenEffects : MonoBehaviour
         _blindnessAnimator.gameObject.SetActive(false);
 
         _playerController.disableMovement = false;
+    }
+
+    public async void DisplayTextOnScreen(string text)
+    {
+        // set the gameobject active
+        _onScreenTextAnimator.gameObject.SetActive(true);
+
+        // change the text on the component to the text being input
+        _onScreenText.text = text;
+
+        // plays the animation to the text fading out
+        _onScreenTextAnimator.Play("OnScreenDisplayFadeOut");
+
+        //waits 4 seconds then disables the gameobject
+        await Task.Delay(4000);
+        _onScreenTextAnimator.gameObject.SetActive(false);
     }
 }
