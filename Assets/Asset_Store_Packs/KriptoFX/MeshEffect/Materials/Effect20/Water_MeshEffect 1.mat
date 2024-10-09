@@ -2,19 +2,27 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Water_MeshEffect 1
   m_Shader: {fileID: 4800000, guid: 972a05a1fafc1c54d8287892f2a939b6, type: 3}
-  m_ShaderKeywords: USE_FRESNEL USE_HEIGHT
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - USE_FRESNEL
+  - USE_HEIGHT
+  - USE_MAINTEX
+  m_InvalidKeywords: []
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -48,11 +56,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _HeightTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 500, y: 500}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: eef71c487a8a3044783e0240ad62fddf, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 5cf09bb7df796ed4985397ce8c60b6e6, type: 3}
+        m_Scale: {x: 50, y: 50}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -74,6 +82,7 @@ Material:
         m_Texture: {fileID: 2800000, guid: cd8abd51143aa5140aded186614aa040, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _AlphaClip: 10
     - _BumpAmt: 3
@@ -91,7 +100,7 @@ Material:
     - _FresnelPow: 2.5
     - _FresnelR0: -0.2
     - _Glossiness: 0.5
-    - _Height: 0.001
+    - _Height: 1
     - _InvFade: 3
     - _Metallic: 0
     - _Mode: 0
@@ -108,7 +117,7 @@ Material:
     - _UseCutout: 0
     - _UseFresnel: 1
     - _UseHeight: 1
-    - _UseMainTex: 0
+    - _UseMainTex: 1
     - _UseRefractive: 0
     - _UseSoft: 0
     - _ZWrite: 1
@@ -118,11 +127,12 @@ Material:
     - _CutoutColor: {r: 1, g: 1, b: 1, a: 1}
     - _DropWavesScale: {r: 1, g: 0.5, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.64878887, g: 1.2476139, b: 1.8382353, a: 1}
-    - _HeightUVScrollDistort: {r: 0, g: -2, b: 0, a: 0}
-    - _MainColor: {r: 0.15916954, g: 0.5528701, b: 0.9411765, a: 1}
+    - _FresnelColor: {r: 0.32624605, g: 0.68181336, b: 1.032301, a: 1}
+    - _HeightUVScrollDistort: {r: 0.5, g: 0, b: 0, a: 0}
+    - _MainColor: {r: 0.06759523, g: 0.36940542, b: 0.46226418, a: 0.8784314}
     - _NoiseScale: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _RimColor: {r: 0.057093438, g: 0.06710122, b: 0.08088237, a: 1}
     - _Speed: {r: 2, g: 15, b: 0, a: 8}
-    - _TintColor: {r: 0.9117647, g: 0.9306288, b: 1, a: 1}
+    - _TintColor: {r: 0.19134924, g: 0.3545843, b: 0.9433962, a: 1}
+  m_BuildTextureStacks: []
