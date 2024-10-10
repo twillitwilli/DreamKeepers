@@ -13,7 +13,8 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         NightmareNamikVillage,
         NamikVillage,
         TeleportNexus,
-        NamikCanyon
+        NamikCanyon,
+        Luruna
     }
 
     SceneSelection _currentScene;
@@ -36,6 +37,9 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
 
             case SceneSelection.NamikCanyon:
                 return "Namik Canyon";
+
+            case SceneSelection.Luruna:
+                return "Lunruna";
         }
 
         return "Error: No Name Found";
