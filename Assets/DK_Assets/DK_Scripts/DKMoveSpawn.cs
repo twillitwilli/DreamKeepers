@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class DKMoveSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    int newSceneSpawnIndex;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        PlayerController player;
+
+        // Check to see if player enters trigger
+        if (other.gameObject.TryGetComponent<PlayerController>(out player))
+        {
+            // sets spawn location for new scene
+            DKGameManager.Instance.spawnLocation = newSceneSpawnIndex;
+        }
     }
 }

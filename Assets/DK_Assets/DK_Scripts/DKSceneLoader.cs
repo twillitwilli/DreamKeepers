@@ -53,6 +53,9 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         // sets the name of the new area
         DKGameManager.Instance.nameOfCurrentArea = GetSceneName();
 
+        // gets current game time
+        DKGameManager.Instance.currentGameTime = DKTime.Instance.currentTime;
+
         // Closes Players Vision
         PlayerController.Instance.head.GetComponent<PlayerScreenEffects>().CloseVision();
 
@@ -62,6 +65,4 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         // casts enum to an int to change to scene in the build list
         SceneManager.LoadScene((int)whichScene);
     }
-
-
 }

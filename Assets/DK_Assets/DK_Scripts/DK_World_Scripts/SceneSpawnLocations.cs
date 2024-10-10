@@ -40,6 +40,9 @@ public class SceneSpawnLocations : MonoSingleton<SceneSpawnLocations>
         // get spawn location from game manager
         int spawnLocation = gameManager.spawnLocation;
 
+        // set current time
+        DKTime.Instance.transform.localEulerAngles = new Vector3(gameManager.currentGameTime, 0, 0);
+
         // move player and adjust player rotation to spawn location
         player.transform.position = spawnLocations[spawnLocation].spawnLocation.position;
         player.transform.rotation = spawnLocations[spawnLocation].spawnLocation.rotation;

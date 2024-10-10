@@ -9,6 +9,7 @@ public class DKGameManager : MonoSingleton<DKGameManager>
 
     public int spawnLocation { get; set; } = 0;
     public string nameOfCurrentArea { get; set; }
+    public float currentGameTime { get; set; }
 
     public override void Awake()
     {
