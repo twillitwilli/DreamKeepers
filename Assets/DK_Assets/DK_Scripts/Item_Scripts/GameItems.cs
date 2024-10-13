@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameItems : MonoBehaviour
 {
+    public enum EquipableItem
+    {
+        sword,
+        bow
+    }
+
     // Item Unlocks
     [HideInInspector]
     public bool

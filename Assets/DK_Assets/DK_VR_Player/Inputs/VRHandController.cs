@@ -46,6 +46,14 @@ public sealed class VRHandController : MonoBehaviour
 
     public bool isClimbing { get; private set; }
 
+    // ----------------------------------------------------------
+
+    // ----------------- Equippable Variables -------------------
+
+    public Transform equippableItemSlot;
+
+    public EquipableItem currentEquippedItem { get; set; }
+
     void Update()
     {
         // Tracks last 15 positions of the hand, if is holding something
@@ -91,13 +99,53 @@ public sealed class VRHandController : MonoBehaviour
         {
             if (grab)
             {
-                Climb();
-                _handAnimator.ChangeAnimation("TelekineticHold");
+                // Check which type of grabable you are trying to grab
+                switch (_physicalGrabTrigger.currentGrabable.typeOfGrabable)
+                {
+                    case Grabable.GrabableType.throwable:
+
+                        GrabThrowableObject();
+                        _handAnimator.ChangeAnimation("TelekineticHold");
+
+                        break;
+
+                    case Grabable.GrabableType.climbable:
+
+                        Climb();
+
+                        break;
+
+                    case Grabable.GrabableType.equipable:
+
+                        // if you grab item from the opposite hand will unequip item from opposite hand
+                        if (_oppositeHand.currentEquippedItem != null && _oppositeHand.currentEquippedItem.gameObject == _physicalGrabTrigger.currentGrabable.gameObject)
+                            _oppositeHand.UnequipItem(true);
+
+                        // then equip item
+                        EquipItem();
+
+                        break;
+                }
             }
 
             else
             {
-                ReleaseClimb();
+                // Checks which item you are letting go of
+                switch (_physicalGrabTrigger.currentGrabable.typeOfGrabable)
+                {
+                    case Grabable.GrabableType.throwable:
+                        ThrowObject();
+                        break;
+
+                    case Grabable.GrabableType.climbable:
+                        ReleaseClimb();
+                        break;
+
+                    case Grabable.GrabableType.equipable:
+                        UnequipItem();
+                        break;
+                }
+
                 _handAnimator.ChangeAnimation("Idle");
             }
         }
@@ -179,7 +227,7 @@ public sealed class VRHandController : MonoBehaviour
             _oppositeHand.ReleaseClimb();
 
         // Starting Climb Settings
-        _currentClimbableObject = _physicalGrabTrigger.currentGrabable;
+        _currentClimbableObject = _physicalGrabTrigger.currentGrabable.gameObject;
         _handStartPos = transform.position;
         _climbableObject = _currentClimbableObject.transform;
         _climbablePrevPos = _currentClimbableObject.transform.position;
@@ -238,4 +286,45 @@ public sealed class VRHandController : MonoBehaviour
     }
 
     // --------------------------------------------------------------------------------------------
+
+    // ---------------------------------------- Equipable Functions -------------------------------
+
+    void EquipItem()
+    {
+        // Get the new item being equipped
+        currentEquippedItem = _physicalGrabTrigger.currentGrabable.gameObject.GetComponent<EquipableItem>();
+
+        // parent item to hand and realign
+        currentEquippedItem.gameObject.transform.SetParent(equippableItemSlot);
+        currentEquippedItem.PositionItem();
+    }
+
+    public void UnequipItem(bool oppositeHandEquipped = false)
+    {
+        // checks which item is being unequiped
+        switch (currentEquippedItem.equipableType)
+        {
+            case GameItems.EquipableItem.sword:
+
+                // Holster item
+                Debug.Log("Holster Item");
+
+                break;
+
+            case GameItems.EquipableItem.bow:
+                break;
+        }
+
+        _physicalGrabTrigger.ResetGrabable();
+        currentEquippedItem = null;
+    }
+
+    public float GetHandVelocity()
+    {
+        // Get direction of hand movement
+        Vector3 direction = _handTrackingPos[_handTrackingPos.Count - 1] - _handTrackingPos[0];
+
+        //Hand Velocity
+        return Vector3.Magnitude(direction * 2000);
+    }
 }

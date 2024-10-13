@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public sealed class HandRayCast : MonoBehaviour
 {
@@ -15,20 +16,23 @@ public sealed class HandRayCast : MonoBehaviour
 
     public GameObject _currentGrabableTarget { get; private set; }
 
-    float range = 10;
+    float
+        _telekineticRange = 10,
+        _interactionRange = 3;
 
     private void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * _telekineticRange;
         Debug.DrawRay(transform.position, forward, Color.green);
     }
 
     private void FixedUpdate()
     {
         RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * range;
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * _telekineticRange;
 
-        if (_hand.currentGrabable == null && Physics.Raycast(transform.position, forward, out hit, range, -_ignoreLayers))
+        // Telekinetic Grab
+        if (_hand.currentGrabable == null && Physics.Raycast(transform.position, forward, out hit, _telekineticRange, -_ignoreLayers))
         {
             Throwable newThrowable;
 
@@ -45,6 +49,22 @@ public sealed class HandRayCast : MonoBehaviour
                     
             }
             else TurnOffHitEffect();
+        }
+
+        // Interaction Raycast
+        else if (Physics.Raycast(transform.position, forward, out hit, _interactionRange, -_ignoreLayers))
+        {
+            Button interactionButton;
+
+            if (hit.collider.gameObject.TryGetComponent<Button>(out interactionButton))
+            {
+                // Open Chest
+                Chest newChest;
+                if (interactionButton.gameObject.TryGetComponent<Chest>(out newChest))
+                {
+                    newChest.OpenChest();
+                }
+            }
         }
     }
 

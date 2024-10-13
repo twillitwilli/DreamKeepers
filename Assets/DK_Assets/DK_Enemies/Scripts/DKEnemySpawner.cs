@@ -12,6 +12,8 @@ public class DKEnemySpawner : MonoSingleton<DKEnemySpawner>, iCooldownable
     [SerializeField]
     EnemyPool[] _spawnableEnemies;
 
+    List<GameObject> _currentSpawnedEnemies = new List<GameObject>();
+
     public float cooldownTimer { get; set; }
 
     public int currentEnemyCount { get; set; }
@@ -50,6 +52,10 @@ public class DKEnemySpawner : MonoSingleton<DKEnemySpawner>, iCooldownable
             // get new enemy
             int whichEnemy = randomEnemy ? GetRandomSpawn() : specificEnemy;
             GameObject newEnemy = _spawnableEnemies[whichEnemy].GetItem();
+
+            // add enemy to current spawned enemies
+            if (!_currentSpawnedEnemies.Contains(newEnemy))
+                _currentSpawnedEnemies.Add(newEnemy);
 
             // new enemy postiion
             //newEnemy.transform.position

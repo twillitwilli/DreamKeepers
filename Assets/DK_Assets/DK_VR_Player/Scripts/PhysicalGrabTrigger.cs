@@ -4,12 +4,14 @@ using UnityEngine;
 
 public sealed class PhysicalGrabTrigger : MonoBehaviour
 {
-    public GameObject currentGrabable { get; private set; }
+    public Grabable currentGrabable { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (currentGrabable == null && other.CompareTag("Climbable"))
-            currentGrabable = other.gameObject;
+        Grabable newGrabable;
+
+        if (currentGrabable == null && other.gameObject.TryGetComponent<Grabable>(out newGrabable))
+            currentGrabable = newGrabable;
     }
 
     private void OnTriggerExit(Collider other)

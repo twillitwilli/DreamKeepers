@@ -1,0 +1,301 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4397335071952719363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1315173241082884297}
+  m_Layer: 0
+  m_Name: SmallStackedJars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1315173241082884297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4397335071952719363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5595146322038974799}
+  - {fileID: 4377149594916306536}
+  - {fileID: 2489121604533135840}
+  - {fileID: 6340111544350672436}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2691501939993382238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1315173241082884297}
+    m_Modifications:
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -176.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 105.68258
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -150.143
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103976204040011648, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075639501183396134, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Name
+      value: ForestJars (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+--- !u!4 &2489121604533135840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+  m_PrefabInstance: {fileID: 2691501939993382238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4282855581789526742
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1315173241082884297}
+    m_Modifications:
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -176.813
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 105.68258
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -150.42203
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103976204040011648, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075639501183396134, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Name
+      value: ForestJars (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+--- !u!4 &4377149594916306536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+  m_PrefabInstance: {fileID: 4282855581789526742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5365181093103357425
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1315173241082884297}
+    m_Modifications:
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -176.53366
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 105.68258
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -150.42203
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103976204040011648, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075639501183396134, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Name
+      value: ForestJars
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+--- !u!4 &5595146322038974799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+  m_PrefabInstance: {fileID: 5365181093103357425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5777443169969250954
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1315173241082884297}
+    m_Modifications:
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -176.669
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 105.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -150.325
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103976204040011648, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075639501183396134, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+      propertyPath: m_Name
+      value: ForestJars (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+--- !u!4 &6340111544350672436 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 563231601361036478, guid: de4abeeb9e97c6c4b9d3409b8453e1c7, type: 3}
+  m_PrefabInstance: {fileID: 5777443169969250954}
+  m_PrefabAsset: {fileID: 0}

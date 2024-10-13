@@ -6,6 +6,9 @@ using SoT.Classes;
 
 public class DKTime : MonoSingleton<DKTime>
 {
+    public delegate void TimeOfDayChanged();
+    public static event TimeOfDayChanged timeChanged;
+
     [SerializeField]
     Rotation rotationController;
 
@@ -25,40 +28,101 @@ public class DKTime : MonoSingleton<DKTime>
 
     public float currentTime { get; set; }
 
+    public bool isNight { get; private set; }
+
     public void Update()
     {
         currentTime = transform.localEulerAngles.x;
 
         CurrentTimeOfDay();
+
+        if (currentTime > 180 && !isNight)
+            ToggleDayNight(true);
+
+        else if (currentTime > 0 && currentTime < 180 && isNight)
+            ToggleDayNight(false);
     }
 
     public void CurrentTimeOfDay()
     {
-        if (currentTime < 2)
+        if (currentTime < 2 && timeOfDay != TimeOfDay.dawn)
+        {
             timeOfDay = TimeOfDay.dawn;
+            if (timeChanged != null)
+                timeChanged();
+        } 
 
-        else if (currentTime > 2 && currentTime < 60)
+        else if (currentTime > 2 && currentTime < 60 && timeOfDay != TimeOfDay.morning)
+        {
             timeOfDay = TimeOfDay.morning;
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
 
-        else if (currentTime > 60 && currentTime < 120)
+        else if (currentTime > 60 && currentTime < 120 && timeOfDay != TimeOfDay.afternoon)
+        {
             timeOfDay = TimeOfDay.afternoon;
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
 
-        else if (currentTime > 120 && currentTime < 178)
+        else if (currentTime > 120 && currentTime < 178 && timeOfDay != TimeOfDay.evening)
+        {
             timeOfDay = TimeOfDay.evening;
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
 
-        else if (currentTime > 178 && currentTime < 180)
+        else if (currentTime > 178 && currentTime < 180 && timeOfDay != TimeOfDay.dusk)
+        {
             timeOfDay = TimeOfDay.dusk;
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
 
-        else if (currentTime > 180 && currentTime < 240)
+        else if (currentTime > 180 && currentTime < 240 && timeOfDay != TimeOfDay.night)
+        {
             timeOfDay = TimeOfDay.night;
-
-        else if (currentTime > 240 && currentTime < 300)
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
+        else if (currentTime > 240 && currentTime < 300 && timeOfDay != TimeOfDay.midnight)
+        {
             timeOfDay = TimeOfDay.midnight;
-
-        else if (currentTime > 300 && currentTime < 360)
+            if (timeChanged != null)
+                timeChanged();
+        }
+            
+        else if (currentTime > 300 && currentTime < 360 && timeOfDay != TimeOfDay.afterMidnight)
+        {
             timeOfDay = TimeOfDay.afterMidnight;
+            if (timeChanged != null)
+                timeChanged();
+        }
 
         else
             currentTime = 0;
+    }
+
+    void ToggleDayNight(bool night)
+    {
+        if (night)
+        {
+            // night time is shorter than day time
+            rotationController.rotationSpeed = -0.35f;
+
+            isNight = true;
+        }
+
+        else
+        {
+            rotationController.rotationSpeed = -0.25f;
+            isNight = false;
+        }
     }
 }
