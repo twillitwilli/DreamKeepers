@@ -13,6 +13,8 @@ public class Sword : MonoBehaviour
     {
         if (currentHand != null)
         {
+            Debug.Log("current hand velocity with sword = " + currentHand.GetHandVelocity());
+
             if (currentHand.GetHandVelocity() > 500)
                 _swordTrigger.isTrigger = true;
 

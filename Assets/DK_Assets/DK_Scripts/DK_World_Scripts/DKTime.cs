@@ -32,15 +32,18 @@ public class DKTime : MonoSingleton<DKTime>
 
     public void Update()
     {
-        currentTime = transform.localEulerAngles.x;
+        if (!DKGameManager.Instance.isNightmare)
+        {
+            currentTime = transform.localEulerAngles.x;
 
-        CurrentTimeOfDay();
+            CurrentTimeOfDay();
 
-        if (currentTime > 180 && !isNight)
-            ToggleDayNight(true);
+            if (currentTime > 180 && !isNight)
+                ToggleDayNight(true);
 
-        else if (currentTime > 0 && currentTime < 180 && isNight)
-            ToggleDayNight(false);
+            else if (currentTime > 0 && currentTime < 180 && isNight)
+                ToggleDayNight(false);
+        }
     }
 
     public void CurrentTimeOfDay()

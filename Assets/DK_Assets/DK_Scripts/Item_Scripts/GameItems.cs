@@ -11,13 +11,14 @@ public class GameItems : MonoBehaviour
     }
 
     // Item Unlocks
-    [HideInInspector]
     public bool
-        sword,
-        bow,
         magicGlove,
         fireCrystal,
         iceCrystal;
 
-    public List<Item> Keys;
+    public List<Item> swords;
+
+    public List<Item> bows;
+
+    public List<Item> keys;
 }

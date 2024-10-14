@@ -13,68 +13,23 @@ public class PlayerJobData : MonoSingleton<PlayerJobData>
         MonsterHunter
     }
 
-    // Lumberjack
-    public float lumberjackExp { get; private set; }
-    public int lumberjackLevel { get; private set; }
-
-    // Gatherer
-    public float gathererExp { get; private set; }
-    public int gathererLevel { get; private set; }
-
-    // Hunter
-    public float hunterExp { get; private set; }
-    public int hunterLevel { get; private set; }
-
-    // Monster Hunter
-    public float monsterHunterExp { get; private set; }
-    public int monsterHunterLevel { get; private set; }
-
+    public JobData[] jobs;
 
     public void LevelUp(PlayerJobs job, float exp)
     {
-        switch (job)
+        // casts enum to int
+        int whichJob = (int)job;
+
+        // adds exp gained to job completed
+        jobs[whichJob].jobExp += exp;
+
+        // checks to see if you got enough exp to level up your job
+        if (LevelUpCheck(jobs[whichJob].jobExp))
         {
-            case PlayerJobs.Lumberjack:
+            Debug.Log(jobs[whichJob].jobName + " Level Up");
 
-                lumberjackExp += exp;
-                if (LevelUpCheck(lumberjackExp))
-                {
-                    Debug.Log("Lumberjack Level Up");
-                    lumberjackLevel++;
-                    lumberjackExp = 0;
-                }
-
-                break;
-
-            case PlayerJobs.Gatherer:
-
-                gathererExp += exp;
-                if (LevelUpCheck(gathererExp))
-                {
-                    Debug.Log("Gatherer Level Up");
-                }
-
-                break;
-
-            case PlayerJobs.Hunter:
-
-                hunterExp += exp;
-                if (LevelUpCheck(hunterExp))
-                {
-                    Debug.Log("Hunter Level Up");
-                }
-
-                break;
-
-            case PlayerJobs.MonsterHunter:
-
-                monsterHunterExp += exp;
-                if (LevelUpCheck(monsterHunterExp))
-                {
-                    Debug.Log("Monster Hunter Level Up");
-                }
-
-                break;
+            jobs[whichJob].jobLevel++;
+            jobs[whichJob].jobExp = 0;
         }
     }
 

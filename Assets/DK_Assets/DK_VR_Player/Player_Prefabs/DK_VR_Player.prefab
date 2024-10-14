@@ -421,8 +421,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 15000
+  field of view: 109.38694
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -689,14 +689,7 @@ MonoBehaviour:
   leftHand: {fileID: 8509820766882673350}
   rightHand: {fileID: 9166102580036023090}
   _groundChecker: {fileID: 6428924877240883819}
-  playerData:
-    name: 
-    maxHealth: 1000
-    walkSpeed: 5
-    sprintSpeedMultiplier: 2
-    sneakSpeedReduction: 2
-    dashDistance: 10
-    jumpVelocity: 5
+  playerStats: {fileID: 3610574026161419914}
   isGrounded: 0
   isCrouched: 0
   isSprinting: 0
@@ -768,6 +761,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07de9206f6835cc4a9e35c37b29a212f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSword: {fileID: 0}
+  currentBow: {fileID: 0}
 --- !u!1 &4751435886382008285
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +872,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925008e8148c1ff4daaa77d4e1434654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jobs:
+  - jobName: Lumberjack
+    jobLevel: 0
+    jobExp: 0
+  - jobName: Gatherer
+    jobLevel: 0
+    jobExp: 0
+  - jobName: Hunter
+    jobLevel: 0
+    jobExp: 0
+  - jobName: Monster Hunter
+    jobLevel: 0
+    jobExp: 0
 --- !u!1 &5980242108828623761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,6 +1096,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55bd5b31f8ee7c6449ffca5b69875f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    name: Test_Player
+    health: 300
+    healthCrystals: 0
+    maxHealth: 300
+    armor: 0
+    gold: 0
+    maxGold: 0
+    arrows: 0
+    maxArrows: 0
 --- !u!1 &8555210798853139497
 GameObject:
   m_ObjectHideFlags: 0

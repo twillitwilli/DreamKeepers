@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3276307726720084010}
   - component: {fileID: 3965140152629000841}
   - component: {fileID: 8734235215532432979}
-  - component: {fileID: 72971150167924420}
   m_Layer: 15
   m_Name: Prototype_NPC_Body
   m_TagString: Untagged
@@ -85,29 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &72971150167924420
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93596247138847037}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1843688677277093944
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8455663614456817875}
   - component: {fileID: 2161923842593080592}
+  - component: {fileID: 8786450037073326480}
   - component: {fileID: 3662402918728274525}
   - component: {fileID: 3958323062482440352}
   m_Layer: 15
@@ -231,6 +208,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8786450037073326480
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496821587108115072}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!195 &3662402918728274525
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -267,8 +271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4134
   nPCModel: {fileID: 3741942459607980973}
+  _rotationSpeed: 8
   _canMove: 0
   currentTarget: {fileID: 2023700596556117578}
   wanderPoint: {fileID: 6638779810591414712}
@@ -277,25 +282,22 @@ MonoBehaviour:
     becomeStaticAtDestination: 1
     canSit: 0
     canSleep: 1
-    canEnterDoor: 0
     canIteractWithPlayer: 0
     destinationPosition: {x: -101.248, y: 38.251, z: -32.442}
-    startTime: 0
-    endTime: 10
+    startTime: -1
+    endTime: 1
   - destinationName: Wanders around house
     becomeStaticAtDestination: 0
     canSit: 0
     canSleep: 0
-    canEnterDoor: 1
     canIteractWithPlayer: 0
     destinationPosition: {x: -104.965, y: 38.217, z: -30.313}
-    startTime: 10
+    startTime: 1
     endTime: 59
   - destinationName: Wanders around market area
     becomeStaticAtDestination: 0
     canSit: 0
     canSleep: 0
-    canEnterDoor: 1
     canIteractWithPlayer: 1
     destinationPosition: {x: -77.733, y: 38.286, z: 38.554}
     startTime: 59
@@ -304,7 +306,6 @@ MonoBehaviour:
     becomeStaticAtDestination: 1
     canSit: 1
     canSleep: 0
-    canEnterDoor: 0
     canIteractWithPlayer: 1
     destinationPosition: {x: -21.55, y: 38.54, z: 100.78}
     startTime: 176
@@ -313,7 +314,6 @@ MonoBehaviour:
     becomeStaticAtDestination: 0
     canSit: 0
     canSleep: 0
-    canEnterDoor: 1
     canIteractWithPlayer: 0
     destinationPosition: {x: -104.965, y: 38.217, z: -30.313}
     startTime: 230
@@ -322,11 +322,10 @@ MonoBehaviour:
     becomeStaticAtDestination: 1
     canSit: 0
     canSleep: 1
-    canEnterDoor: 0
     canIteractWithPlayer: 0
     destinationPosition: {x: -101.248, y: 38.251, z: -32.442}
     startTime: 290
-    endTime: 360
+    endTime: 361
 --- !u!1 &5305796811416006666
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +337,6 @@ GameObject:
   - component: {fileID: 7156660087994113637}
   - component: {fileID: 8479701241424315461}
   - component: {fileID: 7472659093341615295}
-  - component: {fileID: 1735346565670675690}
   m_Layer: 15
   m_Name: NPC_Eye
   m_TagString: Untagged
@@ -355,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 5305796811416006666}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1.7462297e-10, w: 1}
-  m_LocalPosition: {x: 0.4310004, y: 0.4480014, z: 0}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0.45}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,27 +409,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1735346565670675690
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305796811416006666}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7282657403902165685
 GameObject:
   m_ObjectHideFlags: 0

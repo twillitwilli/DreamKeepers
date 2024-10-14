@@ -62,10 +62,10 @@ public class ItemUnlock : MonoBehaviour
     void SwordUpgrade(VRHandController hand)
     {
         // if you dont have sword unlocked
-        if (!_gameItems.sword)
+        if (!_gameItems.swords[0].itemUnlocked)
         {
             Debug.Log("Your 1st Sword!");
-            _gameItems.sword = true;
+            _gameItems.swords[0].itemUnlocked = true;
 
             SpawnNewSword(hand);
         }

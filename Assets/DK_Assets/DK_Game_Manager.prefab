@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &529804537749599008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2257715820032245397}
+  - component: {fileID: 5259726796602505676}
+  m_Layer: 0
+  m_Name: SaveLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2257715820032245397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529804537749599008}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 744258739284719766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5259726796602505676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529804537749599008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8d5827885a18f4b80c414351167db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2926809337211989391
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,14 +133,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea20863b32933db43b343cf275e81a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sword: 0
-  bow: 0
   magicGlove: 0
   fireCrystal: 0
   iceCrystal: 0
-  Keys:
-  - itemName: Test Key
-    itemID: 5555
+  swords:
+  - itemName: Namik Village Sword
+    itemID: 0
+    itemUnlocked: 0
+  bows:
+  - itemName: Hero's Ancient Bow
+    itemID: 0
+    itemUnlocked: 0
+  keys:
+  - itemName: Test Key For Namik Village House
+    itemID: 0
+    itemUnlocked: 0
 --- !u!1 &4522621083581181276
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +183,7 @@ Transform:
   - {fileID: 626327231176850912}
   - {fileID: 6225252752679422712}
   - {fileID: 85960438320409134}
+  - {fileID: 2257715820032245397}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &868084381228782116
@@ -232,7 +284,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3379833529218445429}
   m_Father: {fileID: 744258739284719766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3002105976080899
@@ -248,7 +301,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainQuestProgression:
-  - progressName: 
+  - progressName: Awake from first nightmare
+    completed: 0
+  - progressName: Talk to 3 villagers about the nightmares
+    completed: 0
+  - progressName: Get first sword
+    completed: 0
+  - progressName: Kill your first nightmare creature
+    completed: 0
+  - progressName: Get letter from guard about the nightmare creatures
+    completed: 0
+  - progressName: Unlock Hero's Tomb
+    completed: 0
+  - progressName: Get First Bow
+    completed: 0
+  - progressName: Kill Hero's Tomb Boss
+    completed: 0
+  - progressName: Save Guards at the bridge
     completed: 0
   nexusPortalUnlocks:
   - progressName: Namik Village
@@ -262,6 +331,9 @@ MonoBehaviour:
   - progressName: Ice Village
     completed: 0
   - progressName: Wizard Town
+    completed: 0
+  sideQuestProgression:
+  - progressName: 
     completed: 0
 --- !u!1 &7125634936688367974
 GameObject:
@@ -306,6 +378,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b8d9c4d8663b0243880652eff074642, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7139651153213203516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3379833529218445429}
+  - component: {fileID: 3290062313726278764}
+  m_Layer: 0
+  m_Name: Job_Progression
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3379833529218445429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139651153213203516}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 626327231176850912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3290062313726278764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7139651153213203516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489d69d814a12e345b23b14a7160b9a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7945620670866828786

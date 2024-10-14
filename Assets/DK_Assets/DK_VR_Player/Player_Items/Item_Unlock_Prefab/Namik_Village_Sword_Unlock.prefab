@@ -133,4 +133,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a325f831e17f04e807308f4b131147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfGrabable: 0
+  typeOfGrabable: 3

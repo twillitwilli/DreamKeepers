@@ -125,6 +125,12 @@ public sealed class VRHandController : MonoBehaviour
                         EquipItem();
 
                         break;
+
+                    case Grabable.GrabableType.unlockable:
+
+                        _physicalGrabTrigger.currentGrabable.GetComponent<ItemUnlock>().UnlockItem(this);
+
+                        break;
                 }
             }
 

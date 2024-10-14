@@ -23,7 +23,15 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
     [SerializeField]
     GroundChecker _groundChecker;
 
-    public PlayerData playerData;
+    public PlayerStats playerStats;
+
+    // Player Base Stats
+    float
+        _walkSpeed = 5,
+        _sprintSpeedMultiplier = 2,
+        _sneakSpeedReduction = 2,
+        _dashDistance = 10,
+        _jumpVelocity = 5;
 
     [HideInInspector]
     public bool
@@ -177,7 +185,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
     {
         if (!isCrouched && _groundChecker.GroundCheck())
         {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
+            playerRB.velocity = new Vector3(playerRB.velocity.x, _jumpVelocity, playerRB.velocity.z);
             isGrounded = false;
         }
     }
@@ -189,7 +197,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
         {
             //sets player movement to 0
             playerMoving = false;
-            playerMovement = playerData.walkSpeed;
+            playerMovement = _walkSpeed;
             isSprinting = false;
 
             //stop movement audio
@@ -272,7 +280,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
     {
         if (crouched)
         {
-            if (isSprinting) { playerMovement = playerData.walkSpeed; }
+            if (isSprinting) { playerMovement = _walkSpeed; }
             isSprinting = false;
             CrouchSpeedReduction();
 
@@ -283,7 +291,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
 
         else
         {
-            playerMovement = playerData.walkSpeed;
+            playerMovement = _walkSpeed;
             isCrouched = false;
             ChangeMovementSFX();
         }
@@ -291,17 +299,17 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
 
     void CrouchSpeedReduction()
     {
-        playerMovement = playerMovement / playerData.sneakSpeedReduction;
+        playerMovement = playerMovement / _sneakSpeedReduction;
         crouchSpeedSet = true;
     }
 
     public void Sprint()
     {
-        if (!isCrouched && playerMovement == playerData.walkSpeed && !isSprinting)
+        if (!isCrouched && playerMovement == _walkSpeed && !isSprinting)
         {
             isSprinting = true;
             ChangeMovementSFX();
-            playerMovement = playerMovement * playerData.sprintSpeedMultiplier;
+            playerMovement = playerMovement * _sprintSpeedMultiplier;
         }
     }
 
@@ -314,10 +322,10 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
             //_playerStats.iFrame = true;
 
             if (Mathf.Abs(leftJoystickPos.y) >= leftJoystickDeadzoneAdjustment)
-                dashPos = DashDistanceCheck(transform.position + (forwardMovement * playerData.dashDistance * leftJoystickPos.y));
+                dashPos = DashDistanceCheck(transform.position + (forwardMovement * _dashDistance * leftJoystickPos.y));
 
             else if (Mathf.Abs(leftJoystickPos.x) >= leftJoystickDeadzoneAdjustment)
-                dashPos = DashDistanceCheck(transform.position + (rightMovement * playerData.dashDistance * leftJoystickPos.x));
+                dashPos = DashDistanceCheck(transform.position + (rightMovement * _dashDistance * leftJoystickPos.x));
 
             //_playerComponents.dashEffect.gameObject.SetActive(true);
             //_playerComponents.dashEffect.transform.localPosition = new Vector3(leftJoystickPos.x, 0, leftJoystickPos.y);
@@ -374,7 +382,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
     {
         if (jumpButtonDown)
         {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, playerData.jumpVelocity, playerRB.velocity.z);
+            playerRB.velocity = new Vector3(playerRB.velocity.x, _jumpVelocity, playerRB.velocity.z);
             floatPlayer = true;
         }
 

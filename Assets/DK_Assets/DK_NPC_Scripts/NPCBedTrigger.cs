@@ -31,9 +31,10 @@ public class NPCBedTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         NPCController npc;
-        if (_currentNPC == other.gameObject.TryGetComponent<NPCController>(out npc))
+        if (_currentNPC != null && _currentNPC == other.gameObject.TryGetComponent<NPCController>(out npc))
         {
             _currentNPC.nPCModel.transform.localPosition = new Vector3(0, 0, 0);
+            _currentNPC.nPCModel.transform.localEulerAngles = new Vector3(0, 0, 0);
             _currentNPC.GetComponent<CapsuleCollider>().isTrigger = false;
         }
     }

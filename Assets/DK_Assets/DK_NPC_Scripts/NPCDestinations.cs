@@ -11,7 +11,6 @@ public class NPCDestinations
         becomeStaticAtDestination,
         canSit,
         canSleep,
-        canEnterDoor,
         canIteractWithPlayer;
 
     public Vector3 destinationPosition;

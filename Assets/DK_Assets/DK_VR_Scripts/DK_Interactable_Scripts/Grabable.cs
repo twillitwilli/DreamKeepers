@@ -8,7 +8,8 @@ public class Grabable : MonoBehaviour
     {
         throwable,
         climbable,
-        equipable
+        equipable,
+        unlockable
     }
 
     public GrabableType typeOfGrabable;

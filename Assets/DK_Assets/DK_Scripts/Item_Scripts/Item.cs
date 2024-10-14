@@ -8,4 +8,6 @@ public class Item
     public string itemName;
 
     public int itemID;
+
+    public bool itemUnlocked;
 }

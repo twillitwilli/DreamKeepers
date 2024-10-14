@@ -2,12 +2,18 @@
 public class PlayerData
 {
     public string name;
-    public int maxHealth;
 
     public float
-        walkSpeed,
-        sprintSpeedMultiplier,
-        sneakSpeedReduction,
-        dashDistance,
-        jumpVelocity;
+        health,
+        healthCrystals,
+        maxHealth,
+        armor;
+
+    public int
+        gold,
+        maxGold;
+
+    public int
+        arrows,
+        maxArrows;
 }

@@ -16,6 +16,15 @@ public class DKMoveSpawn : MonoBehaviour
         {
             // sets spawn location for new scene
             DKGameManager.Instance.spawnLocation = newSceneSpawnIndex;
+
+            // Gets player screen effects component
+            PlayerScreenEffects screenEffects = player.head.GetComponent<PlayerScreenEffects>();
+
+            // Clears players vision that is applied during changing scenes
+            screenEffects.CloseVision();
+
+            // Move player
+            SceneSpawnLocations.Instance.MovePlayer();
         }
     }
 }

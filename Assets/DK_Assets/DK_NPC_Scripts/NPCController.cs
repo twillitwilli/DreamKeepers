@@ -7,14 +7,15 @@ using SoT.Interfaces;
 
 public class NPCController : MonoBehaviour, iCooldownable
 {
-    PlayerController _playerController;
-
     NavMeshAgent _navAgent;
 
     [SerializeField]
     LayerMask _ignoreLayers;
 
     public GameObject nPCModel;
+
+    [SerializeField]
+    float _rotationSpeed;
 
     // ------------------ Wandering Variables --------------------------
 
@@ -35,30 +36,30 @@ public class NPCController : MonoBehaviour, iCooldownable
 
     // --------------------- NPC Destinations ----------------------------
 
-    DKTime _time;
-
     public NPCDestinations[] destinations;
     public NPCDestinations currentDestination { get; private set; }
 
-    bool _destinationReached;
+    bool
+        _destinationReached,
+        _gettingNewDestination;
 
-    Vector3 destinationPos;
+    Vector3
+        _destinationPos,
+        _previousPos;
 
     private void Awake()
     {
         _navAgent = GetComponent<NavMeshAgent>();
-        _playerController = PlayerController.Instance;
-        _time = DKTime.Instance;
+
+        currentDestination = new NPCDestinations();
     }
 
-    private void Start()
+    private async void Start()
     {
         DKTime.timeChanged += GetNewDestination;
 
         // sets npc where they should be on scene load based on time of day
         GetNewDestination();
-        transform.position = destinationPos;
-        _destinationReached = true;
     }
 
     private void Update()
@@ -68,18 +69,26 @@ public class NPCController : MonoBehaviour, iCooldownable
             // Cooldown for wander movement
             _canMove = true;
         }
+
+        // if npc isnt moving but should be, create a new waypoint to move to
+        if (_canMove && currentDestination != null && !currentDestination.becomeStaticAtDestination && _previousPos == transform.position)
+            CheckPathToNewPoint(CreateNewWanderPoint());
     }
 
     private void LateUpdate()
     {
         if (_canMove)
         {
-            if (_destinationReached && !currentDestination.becomeStaticAtDestination)
+            if (currentDestination != null && _destinationReached && !currentDestination.becomeStaticAtDestination)
                 Wander();
 
             else
                 GoToDestination();
         }
+
+        // if there is a target, the npc will face toward it
+        if (currentTarget != null && Vector3.Distance(currentTarget.position, transform.position) > 3)
+            FaceTarget(currentTarget);
     }
 
     // -------------------------------- Wandering Functions ------------------------------------------
@@ -91,26 +100,20 @@ public class NPCController : MonoBehaviour, iCooldownable
             CheckPathToNewPoint(CreateNewWanderPoint());
 
         else
-        {
-            // checks to see if npc reached the wander position and sets cooldown
-            if (wanderPoint.position == transform.position)
-            {
-                _gotToPoint = true;
-                _canMove = false;
-                CooldownDone(true, Random.Range(5, 15));
-            }
-                
+        {       
             currentTarget = wanderPoint;
-
-            float distanceFromPoint = Vector3.Distance(wanderPoint.position, transform.position);
-            //WalkingRunningController(distanceFromPoint);
 
             _navAgent.SetDestination(wanderPoint.position);
 
-            if (distanceFromPoint - 1 <= _navAgent.stoppingDistance)
+            if (Vector3.Distance(transform.position, wanderPoint.transform.position) < 1)
+            {
+                CooldownDone(true, Random.Range(5, 15));
                 _gotToPoint = true;
+                _canMove = false;
+            }
 
             _lastPos = transform.position;
+            _previousPos = transform.position;
         }
     }
 
@@ -138,8 +141,8 @@ public class NPCController : MonoBehaviour, iCooldownable
     {
         wanderPoint.SetParent(null);
 
-        float newX = transform.position.x + Random.Range(-4, 4);
-        float newZ = transform.position.z + Random.Range(-4, 4);
+        float newX = transform.position.x + Random.Range(-12, 12);
+        float newZ = transform.position.z + Random.Range(-12, 12);
         wanderPoint.position = new Vector3(newX, transform.position.y, newZ);
 
         return wanderPoint.position;
@@ -163,32 +166,89 @@ public class NPCController : MonoBehaviour, iCooldownable
 
     // -------------------------------- Destination Functions -----------------------------------------
 
-    public async void GetNewDestination()
+    public void GetNewDestination()
     {
-        // wait 10 - 20 seconds before trying to get a new destination
-        await Task.Delay(Random.Range(10000, 20000));
-
-        float currentTime = DKTime.Instance.currentTime;
-
-        for (int i = 0; i < destinations.Length; i++)
+        if (!_gettingNewDestination)
         {
-            // finds which destination the npc should be at based on time of day
-            if (destinations[i].startTime < currentTime && destinations[i].endTime > currentTime)
+            _gettingNewDestination = true;
+
+            Debug.Log("Getting new destination");
+
+            float currentTime = DKTime.Instance.currentTime;
+
+            Debug.Log("CurrentTime = " + currentTime);
+
+            for (int i = 0; i < destinations.Length; i++)
             {
-                //checks to make sure the destination is different from the last one 
-                if (currentDestination != null && currentDestination == destinations[i])
-                    return;
-                
-                // sets new destination
-                currentDestination = destinations[i];
-                destinationPos = destinations[i].destinationPosition;
-                _destinationReached = false;
+                // finds which destination the npc should be at based on time of day
+                if (destinations[i].startTime < currentTime && destinations[i].endTime > currentTime)
+                {
+                    Debug.Log("found new destination = " + destinations[i].destinationName);
+
+                    // sets new destination
+                    if (currentDestination != null)
+                    {
+                        currentDestination.destinationName = destinations[i].destinationName;
+                        currentDestination.destinationPosition = destinations[i].destinationPosition;
+                        currentDestination.becomeStaticAtDestination = destinations[i].becomeStaticAtDestination;
+                        currentDestination.canSit = destinations[i].canSit;
+                        currentDestination.canSleep = destinations[i].canSleep;
+                        currentDestination.canIteractWithPlayer = destinations[i].canIteractWithPlayer;
+                        currentDestination.startTime = destinations[i].startTime;
+                        currentDestination.endTime = destinations[i].endTime;
+
+                        //SetCurrentDestinationData(destinations[i]);
+                        _destinationPos = currentDestination.destinationPosition;
+                        _destinationReached = false;
+                        _gettingNewDestination = false;
+
+                        return;
+                    }
+
+                    else Debug.Log("Current Destination ERROR");
+                }
             }
         }
     }
 
     void GoToDestination()
     {
-        _navAgent.SetDestination(destinationPos);
+        _navAgent.SetDestination(_destinationPos);
+
+        // checks to see if destination has been reached
+        if (Vector3.Distance(transform.position, _destinationPos) < 1)
+            _destinationReached = true;
+    }
+
+    // ------------------------------------------------------------------------------------------------
+
+    // ------------------------------------- Facing Direction Functions -------------------------------
+
+    void FaceMovementDirection()
+    {
+        Vector3 direction = (_previousPos + transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+    }
+
+    void FaceTarget(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+    }
+
+    bool FacingPlayer(PlayerController player)
+    {
+        Vector3 currentPos = transform.position;
+        Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        Vector3 direction = playerPos - currentPos;
+
+        float viewRange = Vector3.Angle(transform.forward, direction);
+
+        if (viewRange < 45)
+            return true;
+
+        else return false;
     }
 }

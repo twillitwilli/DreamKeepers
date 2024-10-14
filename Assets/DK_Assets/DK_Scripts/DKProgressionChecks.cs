@@ -10,4 +10,7 @@ public class DKProgressionChecks : MonoSingleton<DKProgressionChecks>
 
     // Nexus Portal Unlock Checks
     public ProgressionCheck[] nexusPortalUnlocks;
+
+    // Side Quest Progressiom
+    public ProgressionCheck[] sideQuestProgression;
 }

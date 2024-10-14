@@ -5,20 +5,7 @@ using SoT.AbstractClasses;
 
 public class PlayerStats : MonoSingleton<PlayerStats>
 {
-    // Health
-    public float health { get; private set; }
-    public float healthCrystals { get; private set; }
-    public float maxHealth { get; private set; }
-    public float armor { get; private set; }
-
-    // Gold
-    public int gold { get; private set; }
-    public int maxGold { get; private set; }
-
-    // Arrows
-    public int arrows { get; private set; }
-    public int maxArrows { get; private set; }
-
+    public PlayerData stats;
 
     private void Start()
     {
@@ -28,100 +15,126 @@ public class PlayerStats : MonoSingleton<PlayerStats>
     void DefaultValues()
     {
         // Health Values
-        maxHealth = 300;
-        health = maxHealth;
-        healthCrystals = 0;
-        armor = 0;
+        stats.maxHealth = 300;
+        stats.health = stats.maxHealth;
+        stats.healthCrystals = 0;
+        stats.armor = 0;
 
         // Gold Values
-        gold = 0;
-        maxGold = 5000;
+        stats.gold = 0;
+        stats.maxGold = 5000;
 
         // Arrow Values
-        arrows = 0;
-        maxArrows = 0;
+        stats.arrows = 0;
+        stats.maxArrows = 0;
     }
 
     // ------------------ Health Functions --------------------------
 
+    public void RefillHealth()
+    {
+        stats.health = stats.maxHealth;
+    }
+
+    public void NightmareHealth()
+    {
+        stats.health = 1;
+    }
+
     public void AdjustCurrentHealth(bool damaged, float healthVal)
     {
         // adjusts damage amount based on current armor
-        if (damaged && armor > 0)
-            healthVal -= healthVal * armor;
+        if (damaged && stats.armor > 0)
+            healthVal -= healthVal * stats.armor;
 
-        health += healthVal;
+        stats.health += healthVal;
 
         // player damaged
         if (damaged)
         {
             Debug.Log("Player Took Damage");
 
-            if (health <= 0)
+            if (stats.health <= 0)
                 Death();
         }
 
         // player obtained health
         else
         {
-            if (health > maxHealth)
-                health = maxHealth;
+            if (stats.health > stats.maxHealth)
+                stats.health = stats.maxHealth;
         }
     }
 
     void Death()
     {
-        Debug.Log("Player Died");
+        // if player dies in a dream, they wake up
+        if (DKGameManager.Instance.isNightmare)
+        {
+            switch (DKSceneLoader.Instance.currentScene)
+            {
+                case DKSceneLoader.SceneSelection.NightmareNamikVillage:
+
+                    DKSceneLoader.Instance.ChangeScene(DKSceneLoader.SceneSelection.NamikVillage);
+
+                    break;
+            }
+        }
+
+        else
+        {
+            Debug.Log("Player Died");
+        }
     }
 
     public void HealthCrystalObtained()
     {
-        healthCrystals++;
+        stats.healthCrystals++;
 
         // 5 health crystals will increase max health by 100
-        if (healthCrystals == 5)
+        if (stats.healthCrystals == 5)
         {
-            healthCrystals = 0;
-            maxHealth += 100;
-            health = maxHealth;
+            stats.healthCrystals = 0;
+            stats.maxHealth += 100;
+            stats.health = stats.maxHealth;
         }
     }
 
     public void AdjustArmor(float armorVal)
     {
-        armor += armorVal;
+        stats.armor += armorVal;
 
         // Max armor 50% less damage
-        if (armor > 0.5f)
-            armor = 0.5f;
+        if (stats.armor > 0.5f)
+            stats.armor = 0.5f;
     }
 
     // ----------------------- Gold Functions ------------------------
 
     public void AdjustGold(int goldVal)
     {
-        gold += goldVal;
-        if (gold > maxGold)
-            gold = maxGold;
+        stats.gold += goldVal;
+        if (stats.gold > stats.maxGold)
+            stats.gold = stats.maxGold;
     }
 
     public void ObtainedNewWallet()
     {
-        maxGold *= 2;
+        stats.maxGold *= 2;
     }
 
     // ---------------------- Arrow Functions --------------------------
 
     public void AdjustArrows(int arrowVal)
     {
-        arrows += arrowVal;
+        stats.arrows += arrowVal;
 
-        if (arrows > maxArrows)
-            arrows = maxArrows;
+        if (stats.arrows > stats.maxArrows)
+            stats.arrows = stats.maxArrows;
     }
 
     public void ArrowUpgrade()
     {
-        maxArrows += 16;
+        stats.maxArrows += 16;
     }
 }
