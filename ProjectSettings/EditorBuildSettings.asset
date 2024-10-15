@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NamikCanyon.unity
     guid: 96ecd8fcb83deba40878742e5f958bcc
+  - enabled: 1
+    path: Assets/Scenes/Luruna.unity
+    guid: b4d2e80501f7ebf44a5371bd8f0044bf
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 91df79ae82f484843952ebf82e581206, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 406625cb758fba54da5d6049d098a91d, type: 2}

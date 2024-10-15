@@ -13,11 +13,9 @@ public class DisplaySaveStats : MonoBehaviour
 
     private void Start()
     {
-        if (DKSaveLoad.Instance.CheckForFileSave(_saveFile) != null)
-        {
-            DKBinarySaveData loadedData = DKBinarySaveSystem.LoadData(_saveFile);
+        BinarySaveData loadedData = BinarySaveSystem.LoadData(_saveFile);
 
+        if (loadedData != null)
             _text.text = "Save File #" + _saveFile + "\n" + loadedData.playerName;
-        }
     }
 }

@@ -59,7 +59,7 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         return "Error: No Name Found";
     }
 
-    public async void ChangeScene(SceneSelection whichScene)
+    public async void ChangeScene(SceneSelection whichScene, bool newGameLoad = false)
     {
         // changes new scene to current scene
         currentScene = whichScene;
@@ -78,7 +78,8 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         PlayerController.Instance.head.GetComponent<PlayerScreenEffects>().CloseVision();
 
         // Saves Game Data
-        DKSaveLoad.Instance.SaveGame();
+        if (!newGameLoad)
+            BinaryPlayerSaveLoad.Instance.SaveData(DKGameManager.Instance.saveFile);
 
         // wait 3 seconds before changing scene
         await Task.Delay(3000);

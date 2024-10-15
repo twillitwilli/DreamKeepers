@@ -17,12 +17,15 @@ public class CreateLoadGameTrigger : MonoBehaviour
             DKGameManager.Instance.saveFile = _saveFile;
 
             // Check to see if this is a new game or loading previous game
-            if (DKSaveLoad.Instance.CheckForFileSave(_saveFile) != null)
-                DKSaveLoad.Instance.LoadGame();
+            BinarySaveData loadedData = BinarySaveSystem.LoadData(_saveFile);
 
-            // starts new game if no file save was found
+            // Found Game Save
+            if (loadedData != null) 
+                BinaryPlayerSaveLoad.Instance.LoadSavedData(loadedData);
+
+            // Starts New Game
             else
-                DKSceneLoader.Instance.ChangeScene(DKSceneLoader.SceneSelection.NightmareNamikVillage);
+                DKSceneLoader.Instance.ChangeScene(DKSceneLoader.SceneSelection.NightmareNamikVillage, true);
         }
     }
 }
