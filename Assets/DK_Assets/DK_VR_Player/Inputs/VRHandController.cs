@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public sealed class VRHandController : MonoBehaviour
@@ -15,6 +16,9 @@ public sealed class VRHandController : MonoBehaviour
 
     [SerializeField]
     HandAnimatorController _handAnimator;
+
+    [SerializeField]
+    BoxCollider _handCollider;
 
     // ---------------- Throwable Variables -----------------
 
@@ -187,8 +191,11 @@ public sealed class VRHandController : MonoBehaviour
         currentGrabable.transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 
-    void ThrowObject()
+    async void ThrowObject()
     {
+        // turn off hand collider
+        _handCollider.enabled = false;
+
         // Unparent object from hand
         currentGrabable.transform.SetParent(null);
         _currentGrabableRB.isKinematic = false;
@@ -211,6 +218,10 @@ public sealed class VRHandController : MonoBehaviour
         currentGrabable = null;
         _currentGrabableRB = null;
         _currentThrowable = null;
+
+        // wait 1 second, then turn the hand collider back on
+        await Task.Delay(1000);
+        _handCollider.enabled = true;
     }
 
     // -------------------------------------------------------------------------------------------
