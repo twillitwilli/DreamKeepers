@@ -18,7 +18,7 @@ public sealed class HandRayCast : MonoBehaviour
 
     float
         _telekineticRange = 10,
-        _interactionRange = 3;
+        _interactionRange = 5;
 
     private void Update()
     {
