@@ -16,7 +16,8 @@ public sealed class PhysicalGrabTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Climbable"))
+        Grabable newGrabable;
+        if (other.CompareTag("Climbable") || currentGrabable == other.gameObject.TryGetComponent<Grabable>(out newGrabable))
             ResetGrabable();
     }
 

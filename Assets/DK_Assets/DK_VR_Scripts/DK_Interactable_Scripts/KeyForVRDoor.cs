@@ -12,6 +12,6 @@ public class KeyForVRDoor : MonoBehaviour
         VRDoor doorLock;
 
         if (other.TryGetComponent<VRDoor>(out doorLock))
-            doorLock.UnlockDoor(keyID);
+            doorLock.UnlockDoor();
     }
 }

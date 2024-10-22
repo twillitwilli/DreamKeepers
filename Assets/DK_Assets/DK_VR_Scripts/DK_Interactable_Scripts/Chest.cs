@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
 public class Chest : MonoBehaviour
 {
     Animator _animator;
 
     bool _chestOpened;
-
-    [SerializeField]
-    GameObject _itemRewardPrefab;
 
     private void Awake()
     {
@@ -23,12 +21,5 @@ public class Chest : MonoBehaviour
             _animator.Play("ChestOpening");
             _chestOpened = true;
         }
-        
-    }
-
-    public void ChestOpened()
-    {
-        Debug.Log("Chest Opened, Get a reward");
-        Instantiate(_itemRewardPrefab, transform.position, transform.rotation);
     }
 }

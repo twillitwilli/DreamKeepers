@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: bdayeffect 1
+  m_Name: ForestSwordEffect
   m_Shader: {fileID: 4800000, guid: f8f24f9fc62964844b4623f583f9aef6, type: 3}
   m_ShaderKeywords: USE_CUTOUT USE_FRESNEL USE_HEIGHT USE_MAINTEX
   m_LightmapFlags: 5

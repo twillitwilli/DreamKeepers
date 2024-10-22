@@ -47,6 +47,8 @@ public class NPCController : MonoBehaviour, iCooldownable
         _destinationPos,
         _previousPos;
 
+    // ----------------------------------------------------------------------
+
     private void Awake()
     {
         _navAgent = GetComponent<NavMeshAgent>();

@@ -160,6 +160,8 @@ GameObject:
   - component: {fileID: 8786450037073326480}
   - component: {fileID: 3662402918728274525}
   - component: {fileID: 3958323062482440352}
+  - component: {fileID: 141718108751959254}
+  - component: {fileID: 857013146722935427}
   m_Layer: 15
   m_Name: DK_NPC_Prefab
   m_TagString: Enemy
@@ -326,6 +328,38 @@ MonoBehaviour:
     destinationPosition: {x: -101.248, y: 38.251, z: -32.442}
     startTime: 290
     endTime: 361
+--- !u!114 &141718108751959254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496821587108115072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda9758002ffe494ab13fc50eefc65c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfInteractable: 3
+--- !u!114 &857013146722935427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496821587108115072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5bed930054af47ae0c89bfe8a8dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _npcQuestDialogue:
+  - Start a quest
+  _randomizedDialogue:
+  - Hello
+  - Goodbye
+  - What's that behind you?
+  _randomizeDialogue: 1
 --- !u!1 &5305796811416006666
 GameObject:
   m_ObjectHideFlags: 0
