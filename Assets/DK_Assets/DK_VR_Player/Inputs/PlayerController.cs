@@ -48,8 +48,7 @@ public sealed class PlayerController : MonoSingleton<PlayerController>
         playerHandAdjusterOn,
         playerMoving,
         isGhost,
-        meditating,
-        movementDisabled;
+        meditating;
 
     public Rigidbody playerRB { get; set; }
     public CapsuleCollider playerCollider { get; set; }
