@@ -36,38 +36,49 @@ public class DalamikPlayer : MonoBehaviour
 
     private void Update()
     {
+        // checks to see if player can roll and has rolled
         if (canRoll && roll)
             Roll();
     }
 
     public void Roll()
     {
+        // disables can roll and roll
         canRoll = false;
         roll = false;
 
+        // if this is the first roll of the game
         if (DalamikGameManager.Instance.playerOrderRoll)
         {
+            // selects random value between 1 and 1000
             int selectedRollValue = Random.Range(1, 1000);
 
+            // sends player and random value to game manager to determine player order of the game
             DalamikGameManager.Instance.GetPlayerOrder(this, selectedRollValue);
         }
 
         else
         {
+            // random movement spaces count
             int selectedRollValue = Random.Range(1, maxRollValue);
 
+            // set how many spaces player can move
             spacesCanMove = selectedRollValue;
 
+            // sets the last amount of spaces the player can move
             lastRoll = selectedRollValue;
         }
     }
 
     public void PlayerMovedASpace(GameTile spacedPlayerMovedTo)
     {
+        // sets the current tile the player is at
         currentTile = spacedPlayerMovedTo;
 
+        // removes 1 movement space from how many spaces the player can move
         spacesCanMove--;
 
+        // if the player cant move anymore, activates next players turn
         if (spacesCanMove == 0)
             DalamikGameManager.Instance.NextPlayerTurn();
     }
