@@ -47,6 +47,7 @@ public class SceneSpawnLocations : MonoSingleton<SceneSpawnLocations>
 
         else
             DKTime.Instance.transform.localEulerAngles = new Vector3(gameManager.currentGameTime, 0, 0);
+        Debug.Log("Current Game Time" + gameManager.currentGameTime);
 
         // move player and adjust player rotation to spawn location
         player.transform.position = spawnLocations[spawnLocation].spawnLocation.position;
