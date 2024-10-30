@@ -703,8 +703,6 @@ MonoBehaviour:
   playerHandAdjusterOn: 0
   playerMoving: 0
   isGhost: 0
-  meditating: 0
-  movementDisabled: 0
   leftJoystickDeadzoneAdjustment: 0.25
   rightJoystickDeadzoneAdjustment: 0.5
   turnSpeedAdjustment: 1
@@ -1292,6 +1290,22 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 2927765845661485961}
+    - target: {fileID: 3062485132164766875, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062485132164766875, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062485132164766875, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062485132164766875, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 8692937324971500961, guid: dd1f87b33814fb24098f49fb4a985da3, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.35

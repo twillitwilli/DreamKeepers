@@ -7,10 +7,13 @@ public class DalamikPlayer : MonoBehaviour
 {
     public string playerName;
 
+    public GameObject currentSpaceDisplayer;
+
     public bool
         canRoll,
         roll,
-        miniGameBlueTeam;
+        miniGameBlueTeam,
+        isAI = true;
 
     public int
         maxRollValue = 12,
@@ -19,8 +22,12 @@ public class DalamikPlayer : MonoBehaviour
         gameCurrency = 20,
         gameRelics;
 
-    [HideInInspector]
-    public GameTile currentTile;
+    public GameTile currentTile { get; set; }
+    public PlayerController player { get; set; }
+    public DalamikPlayerControls playerControls { get; set; }
+
+    bool _AICanMove;
+    Vector3 _AITargetPos;
 
     private async void Start()
     {
@@ -32,41 +39,77 @@ public class DalamikPlayer : MonoBehaviour
 
         // set starting tile
         currentTile = DalamikGameManager.Instance.startingGameTile;
+
+        // wait 3 - 5 seconds
+        await Task.Delay(Random.Range(3000, 5000));
+
+        if (isAI)
+            roll = true;
     }
 
     private void Update()
     {
-        // checks to see if player can roll and has rolled
-        if (canRoll && roll)
-            Roll();
+        Roll();
+
+        if (_AICanMove)
+        {
+            if (isAI)
+                AIMovementOnBoard();
+
+            else
+                FollowPlayer();
+        }
+
+        if (isAI && _AICanMove)
+        {
+            AIMovementOnBoard();
+        }
     }
 
     public void Roll()
     {
-        // disables can roll and roll
-        canRoll = false;
-        roll = false;
-
-        // if this is the first roll of the game
-        if (DalamikGameManager.Instance.playerOrderRoll)
+        // checks to see if player can roll and has rolled
+        if (canRoll && roll)
         {
-            // selects random value between 1 and 1000
-            int selectedRollValue = Random.Range(1, 1000);
+            // disables can roll and roll
+            canRoll = false;
+            roll = false;
 
-            // sends player and random value to game manager to determine player order of the game
-            DalamikGameManager.Instance.GetPlayerOrder(this, selectedRollValue);
-        }
+            // if this is the first roll of the game
+            if (DalamikGameManager.Instance.playerOrderRoll)
+            {
+                // selects random value between 1 and 1000
+                int selectedRollValue = Random.Range(1, 1000);
 
-        else
-        {
-            // random movement spaces count
-            int selectedRollValue = Random.Range(1, maxRollValue);
+                // displays roll value
+                if (player != null)
+                    playerControls.ChangeTextDisplay("Roll " + selectedRollValue);
 
-            // set how many spaces player can move
-            spacesCanMove = selectedRollValue;
+                // sends player and random value to game manager to determine player order of the game
+                DalamikGameManager.Instance.GetPlayerOrder(this, selectedRollValue);
+            }
 
-            // sets the last amount of spaces the player can move
-            lastRoll = selectedRollValue;
+            else
+            {
+                // random movement spaces count
+                int selectedRollValue = Random.Range(1, maxRollValue);
+
+                // displays roll value
+                if (player != null)
+                    playerControls.ChangeTextDisplay("Roll " + selectedRollValue);
+
+                // set how many spaces player can move
+                spacesCanMove = selectedRollValue;
+
+                // sets the last amount of spaces the player can move
+                lastRoll = selectedRollValue;
+
+                // sets ai movement position
+                _AITargetPos = GetNextSpacePosition();
+
+                // lets AI Move on board
+                _AICanMove = true;
+            }
         }
     }
 
@@ -78,8 +121,49 @@ public class DalamikPlayer : MonoBehaviour
         // removes 1 movement space from how many spaces the player can move
         spacesCanMove--;
 
+        if (player != null)
+        {
+            // display roll value
+            playerControls.ChangeTextDisplay("Move " + spacesCanMove);
+
+            // move current tile effect
+            currentSpaceDisplayer.transform.position = currentTile.transform.position;
+        }
+
         // if the player cant move anymore, activates next players turn
         if (spacesCanMove == 0)
+        {
+            if (isAI)
+                _AICanMove = false;
+
             DalamikGameManager.Instance.NextPlayerTurn();
+        }
+
+        else if (isAI)
+        {
+            _AITargetPos = GetNextSpacePosition();
+        }
+    }
+
+    Vector3 GetNextSpacePosition()
+    {
+        int movementTile = 0;
+
+        if (currentTile.nextTile.Length > 1)
+            movementTile = Random.Range(0, currentTile.nextTile.Length);
+
+        Vector3 newPostion = new Vector3(currentTile.nextTile[movementTile].transform.position.x, transform.position.y, currentTile.nextTile[movementTile].transform.position.z);
+
+        return newPostion;
+    }
+
+    void AIMovementOnBoard()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _AITargetPos, 5 * Time.deltaTime);
+    }
+
+    void FollowPlayer()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5 * Time.deltaTime);
     }
 }

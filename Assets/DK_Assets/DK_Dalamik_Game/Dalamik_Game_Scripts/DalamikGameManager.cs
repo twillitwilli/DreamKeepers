@@ -6,6 +6,9 @@ using SoT.AbstractClasses;
 
 public class DalamikGameManager : MonoSingleton<DalamikGameManager>
 {
+    [SerializeField]
+    DalamikPlayerManager _playerManager;
+
     public GameTile startingGameTile;
 
     public string[]
@@ -20,7 +23,19 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
 
     public Dictionary<DalamikPlayer, int> playerStartingRoll = new Dictionary<DalamikPlayer, int>();
 
-    public int currentPlayerTurn;
+    public int currentPlayerTurn = 0;
+
+    public void PlayerTouchControl(string control)
+    {
+        switch (control)
+        {
+            case "Roll":
+
+                playerOrder[currentPlayerTurn].Roll();
+
+                break;
+        }
+    }
 
     public void GetPlayerOrder(DalamikPlayer player, int startingRoll)
     {
@@ -42,6 +57,15 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
 
             // enable 1st player to let the start the game and roll
             playerOrder[0].canRoll = true;
+
+            if (playerOrder[0].playerControls != null)
+            {
+                playerOrder[0].playerControls.ChangeTextDisplay("Roll");
+                playerOrder[0].playerControls.gameTrigger.enabled = true;
+            }
+
+            else
+                playerOrder[0].roll = true;
         }
     }
 
@@ -60,6 +84,15 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
         {
             currentPlayerTurn++;
             playerOrder[currentPlayerTurn].canRoll = true;
+
+            if (playerOrder[currentPlayerTurn].playerControls != null)
+            {
+                playerOrder[currentPlayerTurn].playerControls.ChangeTextDisplay("Roll");
+                playerOrder[currentPlayerTurn].playerControls.gameTrigger.enabled = true;
+            }
+
+            else
+                playerOrder[currentPlayerTurn].roll = true;
         }
     }
 
@@ -75,5 +108,14 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
         Debug.Log("Mini Game End");
 
         playerOrder[0].canRoll = true;
+    }
+
+    public void DalamikGameOver()
+    {
+        // disable game controls
+        foreach (PlayerController player in _playerManager.currentPlayers)
+            player.leftHand.DalamikGameControls.SetActive(false);
+
+        // return player to previous scene
     }
 }

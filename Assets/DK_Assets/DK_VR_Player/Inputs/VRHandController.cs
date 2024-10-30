@@ -20,6 +20,8 @@ public sealed class VRHandController : MonoBehaviour
     [SerializeField]
     BoxCollider _handCollider;
 
+    public GameObject DalamikGameControls;
+
     // ---------------- Throwable Variables -----------------
 
     [SerializeField]
