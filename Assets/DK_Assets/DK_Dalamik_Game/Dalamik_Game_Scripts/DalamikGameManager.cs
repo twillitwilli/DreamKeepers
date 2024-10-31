@@ -11,12 +11,11 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
 
     public GameTile startingGameTile;
 
-    public string[]
-        leaderboard;
-
     public List<string> playerNames = new List<string>();
 
-    public List<DalamikPlayer> playerOrder = new List<DalamikPlayer>();
+    public List<DalamikPlayer>
+        playerOrder = new List<DalamikPlayer>(),
+        leaderboard = new List<DalamikPlayer>();
 
     [HideInInspector]
     public bool playerOrderRoll = true;
@@ -25,17 +24,7 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
 
     public int currentPlayerTurn = 0;
 
-    public void PlayerTouchControl(string control)
-    {
-        switch (control)
-        {
-            case "Roll":
-
-                playerOrder[currentPlayerTurn].Roll();
-
-                break;
-        }
-    }
+    public int currentTurn;
 
     public void GetPlayerOrder(DalamikPlayer player, int startingRoll)
     {
@@ -73,26 +62,16 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
     {
         // checks to see if this is the last players turn
         if (currentPlayerTurn == 3)
-        {
-            // activate mini game, and reset the current player turn to the 1st player
-            currentPlayerTurn = 0;
             ActivateMiniGame();
-        }
 
         // sets game manager to next player
         else
         {
             currentPlayerTurn++;
-            playerOrder[currentPlayerTurn].canRoll = true;
 
-            if (playerOrder[currentPlayerTurn].playerControls != null)
-            {
-                playerOrder[currentPlayerTurn].playerControls.ChangeTextDisplay("Roll");
-                playerOrder[currentPlayerTurn].playerControls.gameTrigger.enabled = true;
-            }
+            SetCurrentPlayerToBeAbleToRoll();
 
-            else
-                playerOrder[currentPlayerTurn].roll = true;
+            UpdateLeaderboard();
         }
     }
 
@@ -107,15 +86,70 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
     {
         Debug.Log("Mini Game End");
 
-        playerOrder[0].canRoll = true;
+        UpdateLeaderboard();
+
+        currentTurn++;
+
+        if (currentTurn == 30)
+            GameOver();
+
+        else
+        {
+            currentPlayerTurn = 0;
+
+            SetCurrentPlayerToBeAbleToRoll();
+        }
     }
 
-    public void DalamikGameOver()
+    void SetCurrentPlayerToBeAbleToRoll()
     {
+        playerOrder[currentPlayerTurn].canRoll = true;
+
+        if (playerOrder[currentPlayerTurn].playerControls != null)
+        {
+            playerOrder[currentPlayerTurn].playerControls.ChangeTextDisplay("Roll");
+            playerOrder[currentPlayerTurn].playerControls.gameTrigger.enabled = true;
+        }
+
+        else
+            playerOrder[currentPlayerTurn].roll = true;
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Give out winning rewards to players");
+
         // disable game controls
         foreach (PlayerController player in _playerManager.currentPlayers)
             player.leftHand.DalamikGameControls.SetActive(false);
 
-        // return player to previous scene
+        Debug.Log("Display Final Leaderboard, open portal back to real world");
+    }
+
+    public void UpdateLeaderboard()
+    {
+        // clears current leaderboard
+        leaderboard.Clear();
+
+        // create dictionary which will hold players and current total points
+        Dictionary<DalamikPlayer, int> playerCurrentPoints = new Dictionary<DalamikPlayer, int>();
+
+        // checks each players current currency and relics to determine total points then adds player and points to dictionary
+        for (int i = 0; i < playerOrder.Count; i++)
+        {
+            int totalPoints = playerOrder[i].gameCurrency + (playerOrder[i].gameRelics * 10000);
+            playerCurrentPoints.Add(playerOrder[i], totalPoints);
+        }
+
+        // sorts players based on their total points accumulated
+        var sortedLeaderboard = playerCurrentPoints.OrderByDescending(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+
+        // updates the leaderboard
+        foreach (KeyValuePair<DalamikPlayer, int> pair in sortedLeaderboard)
+            leaderboard.Add(pair.Key);
+
+        // update player stat displays
+        foreach (DalamikPlayer player in leaderboard)
+            player.UpdateStatDisplay();
     }
 }

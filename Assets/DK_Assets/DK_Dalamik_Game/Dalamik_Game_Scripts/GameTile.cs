@@ -47,6 +47,9 @@ public class GameTile : MonoBehaviour
 
                 Debug.Log("Can Get Prize");
 
+                if (player.gameCurrency > 50)
+                    player.gameRelics++;
+
                 if (playerStopped)
                     player.miniGameBlueTeam = RandomizeMiniGameTeam();
 

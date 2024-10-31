@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    name: Test_Player
+    playerName: Test_Player
     health: 300
     healthCrystals: 0
     maxHealth: 300

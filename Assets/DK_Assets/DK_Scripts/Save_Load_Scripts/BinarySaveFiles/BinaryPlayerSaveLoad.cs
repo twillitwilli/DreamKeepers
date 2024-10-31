@@ -58,7 +58,7 @@ public class BinaryPlayerSaveLoad : MonoSingleton<BinaryPlayerSaveLoad>
         // Create new data file
         BinarySaveData newData = new BinarySaveData();
 
-        newData.playerName = stats.stats.name;
+        newData.playerName = stats.stats.playerName;
 
         // World Save Data
 
@@ -148,7 +148,7 @@ public class BinaryPlayerSaveLoad : MonoSingleton<BinaryPlayerSaveLoad>
         GameItems gameItems = gameManager.gameItems;
         PlayerJobData jobData = PlayerJobData.Instance;
 
-        stats.stats.name = loadedData.playerName;
+        stats.stats.playerName = loadedData.playerName;
         _playerName = loadedData.playerName;
 
         // World Save Data

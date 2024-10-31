@@ -1,7 +1,7 @@
 [System.Serializable]
 public class PlayerData
 {
-    public string name;
+    public string playerName;
 
     public float
         health,

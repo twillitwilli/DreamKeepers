@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DalamikPlayer : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class DalamikPlayer : MonoBehaviour
         gameCurrency = 20,
         gameRelics;
 
+    [SerializeField]
+    Text
+        playerNameText,
+        tokensText,
+        relicsText,
+        lastRollText,
+        playerLeaderboardPosText;
+
     public GameTile currentTile { get; set; }
     public PlayerController player { get; set; }
     public DalamikPlayerControls playerControls { get; set; }
@@ -36,6 +45,9 @@ public class DalamikPlayer : MonoBehaviour
 
         // set player name to game manager
         DalamikGameManager.Instance.playerNames.Add(playerName);
+
+        // update player name display
+        playerNameText.text = playerName;
 
         // set starting tile
         currentTile = DalamikGameManager.Instance.startingGameTile;
@@ -85,6 +97,8 @@ public class DalamikPlayer : MonoBehaviour
                 if (player != null)
                     playerControls.ChangeTextDisplay("Roll " + selectedRollValue);
 
+                lastRoll = selectedRollValue;
+
                 // sends player and random value to game manager to determine player order of the game
                 DalamikGameManager.Instance.GetPlayerOrder(this, selectedRollValue);
             }
@@ -133,9 +147,7 @@ public class DalamikPlayer : MonoBehaviour
         // if the player cant move anymore, activates next players turn
         if (spacesCanMove == 0)
         {
-            if (isAI)
-                _AICanMove = false;
-
+            _AICanMove = false;
             DalamikGameManager.Instance.NextPlayerTurn();
         }
 
@@ -164,6 +176,42 @@ public class DalamikPlayer : MonoBehaviour
 
     void FollowPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5 * Time.deltaTime);
+        Vector3 playerPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+
+        transform.position = Vector3.MoveTowards(transform.position, playerPos, 5 * Time.deltaTime);
+    }
+
+    public void UpdateStatDisplay()
+    {
+        tokensText.text = "Tokens " + gameCurrency;
+        relicsText.text = "Relics " + gameRelics;
+        lastRollText.text = "Last Roll " + lastRoll;
+
+        switch (DalamikGameManager.Instance.leaderboard.IndexOf(this))
+        {
+            case 0:
+
+                playerLeaderboardPosText.text = "1st";
+
+                break;
+
+            case 1:
+
+                playerLeaderboardPosText.text = "2nd";
+
+                break;
+
+            case 2:
+
+                playerLeaderboardPosText.text = "3rd";
+
+                break;
+
+            case 3:
+
+                playerLeaderboardPosText.text = "4th";
+
+                break;
+        }
     }
 }

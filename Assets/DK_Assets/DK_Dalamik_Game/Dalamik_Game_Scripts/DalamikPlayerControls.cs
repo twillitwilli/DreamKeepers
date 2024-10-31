@@ -23,11 +23,7 @@ public class DalamikPlayerControls : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<IndexFingerTrigger>(out fingerTrigger))
         {
-            if (DalamikGameManager.Instance.playerOrderRoll)
-                dalamikPlayer.roll = true;
-
-            else
-                DalamikGameManager.Instance.PlayerTouchControl(_text.text);
+            dalamikPlayer.roll = true;
 
             gameTrigger.enabled = false;
         }

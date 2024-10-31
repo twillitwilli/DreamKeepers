@@ -28,6 +28,9 @@ public class DalamikPlayerManager : MonoSingleton<DalamikGameManager>
             // set player to player tracker
             playerTrackers[i].player = currentPlayers[i];
 
+            // set player name to tracker
+            playerTrackers[i].playerName = currentPlayers[i].playerStats.stats.playerName;
+
             // set game controls to player tracker
             playerTrackers[i].playerControls = currentPlayers[i].leftHand.DalamikGameControls.GetComponent<DalamikPlayerControls>();
 
