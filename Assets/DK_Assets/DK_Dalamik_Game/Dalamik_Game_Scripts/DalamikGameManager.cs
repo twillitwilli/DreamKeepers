@@ -119,6 +119,43 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
     {
         Debug.Log("Give out winning rewards to players");
 
+        for (int i = 0; i < leaderboard.Count; i++)
+        {
+            if (leaderboard[i].player != null)
+            {
+                switch (i)
+                {
+                    // 1st Place WINNER
+                    case 0:
+
+                        leaderboard[i].player.playerStats.AdjustGold(300);
+
+                        break;
+
+                    // 2nd Place
+                    case 1:
+
+                        leaderboard[i].player.playerStats.AdjustGold(100);
+
+                        break;
+
+                    // 3rd Place
+                    case 2:
+
+                        // Gets 50% off ticket for next game
+
+                        break;
+
+                    // 4th Place
+                    case 3:
+
+                        // Gets nothing
+
+                        break;
+                }
+            }
+        }
+
         // disable game controls
         foreach (PlayerController player in _playerManager.currentPlayers)
             player.leftHand.DalamikGameControls.SetActive(false);
