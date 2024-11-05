@@ -48,7 +48,7 @@ public class GameTile : MonoBehaviour
                 Debug.Log("Can Get Prize");
 
                 if (player.gameCurrency > 50)
-                    player.gameRelics++;
+                    BuyRelic(player);
 
                 if (playerStopped)
                     player.miniGameBlueTeam = RandomizeMiniGameTeam();
@@ -71,5 +71,11 @@ public class GameTile : MonoBehaviour
         bool randomTeam = Random.Range(0, 1) == 1 ? true : false;
 
         return randomTeam;
+    }
+
+    public void BuyRelic(DalamikPlayer player)
+    {
+        player.gameCurrency -= 50;
+        player.gameRelics++;
     }
 }

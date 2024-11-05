@@ -7,7 +7,8 @@ public class GameItems : MonoBehaviour
     public enum EquipableItem
     {
         sword,
-        bow
+        bow,
+        questScroll
     }
 
     // Item Unlocks

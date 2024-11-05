@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 5883356793647872183}
   - component: {fileID: 5887073111251928176}
   - component: {fileID: 4952043902643879697}
-  - component: {fileID: 643548031223713199}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -266,17 +265,3 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Save File #1
---- !u!114 &643548031223713199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8747850170110791652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4263a1cc281a6184999b4497d2c7bfd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _saveFile: 1
-  _text: {fileID: 4952043902643879697}

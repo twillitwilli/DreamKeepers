@@ -79,6 +79,11 @@ public class DalamikGameManager : MonoSingleton<DalamikGameManager>
     {
         Debug.Log("Mini Game Start");
 
+        Debug.Log("Randomizing Mini Game Winner FOR TESTING ONLY");
+
+        int randomWinner = Random.Range(0, 4);
+        playerOrder[randomWinner].gameCurrency += 20;
+
         MiniGameEnd();
     }
 

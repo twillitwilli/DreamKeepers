@@ -14,7 +14,8 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         NamikVillage,
         TeleportNexus,
         NamikCanyon,
-        Luruna
+        Luruna,
+        DalamikGame
     }
 
     public SceneSelection currentScene { get; private set; }
@@ -54,6 +55,10 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
                 WokeUpFromNightmare();
 
                 return "Lunruna";
+
+            case SceneSelection.DalamikGame:
+
+                return "Dalamik Game";
         }
 
         return "Error: No Name Found";

@@ -115,6 +115,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8455663614456817875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1983336054208965646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 750853669270523335}
+  - component: {fileID: 2113907020132920181}
+  m_Layer: 15
+  m_Name: DialogueOptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &750853669270523335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983336054208965646}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8455663614456817875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113907020132920181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983336054208965646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41673f9c686bebf4a8fa9f4cacd8ebce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talking:
+  - dialogueType: NormalChatWithPlayer
+    dialogue:
+    - Hello
+    - Whats that thing over there?
+  - dialogueType: CantGetJob
+    dialogue:
+    - You cant get that job at the moment.
+  - dialogueType: JobAccepted
+    dialogue:
+    - Just bring back that materials I need to complete your work.
+  - dialogueType: JobCompleted
+    dialogue:
+    - Thank you, here is your reward.
+  - dialogueType: Quit Job
+    dialogue:
+    - Well if you want some more work just let me know.
+  - dialogueType: Quest
+    dialogue:
+    - This is the start of a quest and should not be displayed. How am I saying this
+      right now. I guess im not, im just programmed to say this so I'm not actually
+      anything, am I?
 --- !u!1 &3741942459607980973
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +251,8 @@ Transform:
   - {fileID: 2023700596556117578}
   - {fileID: 6638779810591414712}
   - {fileID: 4905501356418642297}
+  - {fileID: 750853669270523335}
+  - {fileID: 1099911876271867237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.598, y: 25.522, z: 0.466}
 --- !u!136 &2161923842593080592
@@ -353,13 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e5bed930054af47ae0c89bfe8a8dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _npcQuestDialogue:
-  - Start a quest
-  _randomizedDialogue:
-  - Hello
-  - Goodbye
-  - What's that behind you?
-  _randomizeDialogue: 1
+  currentTypeOfDialogue: 0
+  _dialogueOptions: {fileID: 2113907020132920181}
+  _chatBubble: {fileID: 0}
+  _dialogueChat: {fileID: 524825119991843871}
 --- !u!1 &5305796811416006666
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +508,59 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6940305710227973197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099911876271867237}
+  - component: {fileID: 8828972054893674207}
+  m_Layer: 0
+  m_Name: Dialogue_Display
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1099911876271867237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940305710227973197}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 1.7462298e-10, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6914540446227121913}
+  m_Father: {fileID: 8455663614456817875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8828972054893674207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940305710227973197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a67a438a68669e4d8dfc60949ebc09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 20
+  lockPosition: 0
+  position: {x: 0, y: 0, z: 0}
+  lockRotationAxis: 0
+  lockX: 0
+  lockY: 0
+  lockZ: 0
+  lockedRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &7282657403902165685
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,3 +592,125 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8455663614456817875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4895901095142552334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1099911876271867237}
+    m_Modifications:
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0270004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481008193796660501, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_Name
+      value: Text_Display
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952043902643879697, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952043902643879697, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952043902643879697, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.021167334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07668593
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.46083
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5883356793647872183, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747850170110791652, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_Name
+      value: Dialogue_Text_Display
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110891764306527485, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110891764306527485, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a2d5f4850df7aae4fb5195fd025ae323, type: 2}
+    m_RemovedComponents:
+    - {fileID: 643548031223713199, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+--- !u!114 &524825119991843871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4952043902643879697, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+  m_PrefabInstance: {fileID: 4895901095142552334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6914540446227121913 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2018982614166844919, guid: aa92935987450e94d9e4d2d0605c7d67, type: 3}
+  m_PrefabInstance: {fileID: 4895901095142552334}
+  m_PrefabAsset: {fileID: 0}

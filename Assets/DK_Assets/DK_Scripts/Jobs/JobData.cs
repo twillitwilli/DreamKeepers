@@ -5,7 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class JobData
 {
-    public string jobName;
+    public enum JobType
+    {
+        gatherer,
+        lumberjack,
+        hunter,
+        monsterHunter
+    }
+
+    public JobType typeOfJob;
 
     public int jobLevel;
 

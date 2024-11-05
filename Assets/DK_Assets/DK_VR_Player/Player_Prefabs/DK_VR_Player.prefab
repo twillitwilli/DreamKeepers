@@ -871,18 +871,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jobs:
-  - jobName: Lumberjack
+  - jobName: -- Lumberjack --
     jobLevel: 0
     jobExp: 0
-  - jobName: Gatherer
+  - jobName: -- Gatherer --
     jobLevel: 0
     jobExp: 0
-  - jobName: Hunter
+  - jobName: -- Hunter --
     jobLevel: 0
     jobExp: 0
-  - jobName: Monster Hunter
+  - jobName: -- Monster Hunter --
     jobLevel: 0
     jobExp: 0
+  currentJobs: []
 --- !u!1 &5980242108828623761
 GameObject:
   m_ObjectHideFlags: 0
