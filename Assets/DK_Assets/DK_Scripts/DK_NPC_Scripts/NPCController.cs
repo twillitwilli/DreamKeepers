@@ -178,18 +178,18 @@ public class NPCController : MonoBehaviour, iCooldownable
         {
             _gettingNewDestination = true;
 
-            Debug.Log("Getting new destination");
+            //Debug.Log("Getting new destination");
 
             float currentTime = DKTime.Instance.currentTime;
 
-            Debug.Log("CurrentTime = " + currentTime);
+            //Debug.Log("CurrentTime = " + currentTime);
 
             for (int i = 0; i < destinations.Length; i++)
             {
                 // finds which destination the npc should be at based on time of day
                 if (destinations[i].startTime < currentTime && destinations[i].endTime > currentTime)
                 {
-                    Debug.Log("found new destination = " + destinations[i].destinationName);
+                    //Debug.Log("found new destination = " + destinations[i].destinationName);
 
                     // sets new destination
                     if (currentDestination != null)

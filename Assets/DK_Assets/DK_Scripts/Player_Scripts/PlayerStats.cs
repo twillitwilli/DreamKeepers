@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SoT.AbstractClasses;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoSingleton<PlayerStats>
 {
     public PlayerData stats;
+
+    [SerializeField]
+    Text _goldDisplay;
 
     private void Start()
     {
@@ -116,6 +120,8 @@ public class PlayerStats : MonoSingleton<PlayerStats>
         stats.gold += goldVal;
         if (stats.gold > stats.maxGold)
             stats.gold = stats.maxGold;
+
+        _goldDisplay.text = "Gold\n" + stats.gold + "/" + stats.maxGold;
     }
 
     public void ObtainedNewWallet()

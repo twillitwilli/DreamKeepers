@@ -30,6 +30,17 @@ public class DKTime : MonoSingleton<DKTime>
 
     public bool isNight { get; private set; }
 
+    private void Start()
+    {
+        // sets the correct time of day when entering a new scene
+        if (!DKGameManager.Instance.isNightmare)
+            transform.localEulerAngles = new Vector3(DKGameManager.Instance.currentGameTime, 0, 0);
+
+        // if nightmare sets static time
+        else
+            transform.localEulerAngles = new Vector3(45, 0, 0);
+    }
+
     public void Update()
     {
         if (!DKGameManager.Instance.isNightmare)
@@ -48,7 +59,7 @@ public class DKTime : MonoSingleton<DKTime>
 
     public void CurrentTimeOfDay()
     {
-        if (currentTime < 2 && timeOfDay != TimeOfDay.dawn)
+        if (currentTime > 0 && currentTime < 2 && timeOfDay != TimeOfDay.dawn)
         {
             timeOfDay = TimeOfDay.dawn;
             if (timeChanged != null)

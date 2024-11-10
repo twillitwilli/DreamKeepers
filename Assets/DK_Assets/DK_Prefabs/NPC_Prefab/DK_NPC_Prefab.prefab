@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTypeOfDialogue: 0
   _dialogueOptions: {fileID: 2113907020132920181}
-  _chatBubble: {fileID: 0}
+  _chatBubble: {fileID: 6940305710227973197}
   _dialogueChat: {fileID: 524825119991843871}
 --- !u!1 &5305796811416006666
 GameObject:
@@ -524,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1099911876271867237
 Transform:
   m_ObjectHideFlags: 0

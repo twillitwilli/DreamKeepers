@@ -25,18 +25,20 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         switch (currentScene)
         {
             case SceneSelection.TitleScreen:
-                DKGameManager.Instance.isNightmare = false;
-                PlayerController.Instance.playerStats.RefillHealth();
+
+                TitleScreenProperties();
+
                 return "Dream Keepers";
 
             case SceneSelection.NightmareNamikVillage:
-                DKGameManager.Instance.isNightmare = true;
-                PlayerController.Instance.playerStats.NightmareHealth();
+
+                NightmareProperties();
+
                 return "Nightmare";
 
             case SceneSelection.NamikVillage:
 
-                WokeUpFromNightmare();
+                WakingUpFromNightmareProperties();
                 
                 return "Namik Village";
 
@@ -46,13 +48,13 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
 
             case SceneSelection.NamikCanyon:
 
-                WokeUpFromNightmare();
+                WakingUpFromNightmareProperties();
 
                 return "Namik Canyon";
 
             case SceneSelection.Luruna:
 
-                WokeUpFromNightmare();
+                WakingUpFromNightmareProperties();
 
                 return "Lunruna";
 
@@ -93,13 +95,31 @@ public class DKSceneLoader : MonoSingleton<DKSceneLoader>
         SceneManager.LoadScene((int)whichScene);
     }
 
-    void WokeUpFromNightmare()
+    void TitleScreenProperties()
+    {
+        DKGameManager.Instance.isNightmare = false;
+        PlayerController.Instance.playerStats.RefillHealth();
+
+        DKGameManager.Instance._postProcessingProfiles.ChangePostProcessingProfile(PostProcessingProfiles.PostProcessingProfileType.BasicSetup);
+    }
+
+    void NightmareProperties()
+    {
+        DKGameManager.Instance.isNightmare = true;
+        PlayerController.Instance.playerStats.NightmareHealth();
+
+        DKGameManager.Instance._postProcessingProfiles.ChangePostProcessingProfile(PostProcessingProfiles.PostProcessingProfileType.Nightmare);
+    }
+
+    void WakingUpFromNightmareProperties()
     {
         // if player is waking up from a nightmare
         if (DKGameManager.Instance.isNightmare)
         {
             PlayerController.Instance.playerStats.RefillHealth();
             DKGameManager.Instance.isNightmare = false;
+
+            DKGameManager.Instance._postProcessingProfiles.ChangePostProcessingProfile(PostProcessingProfiles.PostProcessingProfileType.NightTime);
         }
     }
 }

@@ -40,15 +40,6 @@ public class SceneSpawnLocations : MonoSingleton<SceneSpawnLocations>
         // get spawn location from game manager
         int spawnLocation = gameManager.spawnLocation;
 
-        // set current time from previous scene
-
-        if (gameManager.isNightmare)
-            DKTime.Instance.transform.localEulerAngles = new Vector3(45, 0, 0);
-
-        else
-            DKTime.Instance.transform.localEulerAngles = new Vector3(gameManager.currentGameTime, 0, 0);
-        Debug.Log("Current Game Time" + gameManager.currentGameTime);
-
         // move player and adjust player rotation to spawn location
         player.transform.position = spawnLocations[spawnLocation].spawnLocation.position;
         player.transform.rotation = spawnLocations[spawnLocation].spawnLocation.rotation;

@@ -6,6 +6,7 @@ using SoT.AbstractClasses;
 public class DKGameManager : MonoSingleton<DKGameManager>
 {
     public GameItems gameItems;
+    public PostProcessingProfiles _postProcessingProfiles;
 
     public int spawnLocation { get; set; } = 0;
     public string nameOfCurrentArea { get; set; }

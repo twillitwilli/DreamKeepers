@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerScreenEffects : MonoBehaviour
 {
     [SerializeField]
     PlayerController _playerController;
+
+    public PostProcessVolume postProcessingVolume;
 
     [SerializeField]
     Animator
@@ -25,7 +28,6 @@ public class PlayerScreenEffects : MonoBehaviour
         if (!_headInsideObject && other.gameObject.CompareTag("Wall"))
         {
             _headInsideObject = true;
-            CloseVision();
         }
     }
 
@@ -35,7 +37,6 @@ public class PlayerScreenEffects : MonoBehaviour
         if (_headInsideObject && other.gameObject.CompareTag("Wall"))
         {
             _headInsideObject = false;
-            ClearVision();
         }
     }
 
