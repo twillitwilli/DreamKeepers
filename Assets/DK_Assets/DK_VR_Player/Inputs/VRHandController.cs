@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class VRHandController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public sealed class VRHandController : MonoBehaviour
 
     [SerializeField]
     BoxCollider _handCollider;
+
+    public bool trackHandVelocity { get; set; }
 
     public GameObject DalamikGameControls;
 
@@ -63,7 +66,7 @@ public sealed class VRHandController : MonoBehaviour
     void Update()
     {
         // Tracks last 15 positions of the hand, if is holding something
-        if (currentGrabable != null)
+        if (trackHandVelocity)
         {
             if (_handTrackingPos.Count > 15)
                 _handTrackingPos.RemoveAt(0);
@@ -169,6 +172,9 @@ public sealed class VRHandController : MonoBehaviour
 
     void GrabThrowableObject()
     {
+        // turn on hand velocity tracking
+        trackHandVelocity = true;
+
         // Turn off visual grab effect & reset raycast target
         currentGrabable = _handRayCast._currentGrabableTarget;
         _currentThrowable = currentGrabable.GetComponent<Throwable>();
@@ -224,6 +230,9 @@ public sealed class VRHandController : MonoBehaviour
         // wait 1 second, then turn the hand collider back on
         await Task.Delay(1000);
         _handCollider.enabled = true;
+
+        // turn off hand velocity tracking
+        trackHandVelocity = false;
     }
 
     // -------------------------------------------------------------------------------------------
@@ -328,6 +337,8 @@ public sealed class VRHandController : MonoBehaviour
                 // Holster item
                 Debug.Log("Holster Item");
 
+                trackHandVelocity = false;
+
                 break;
 
             case GameItems.EquipableItem.bow:
@@ -340,10 +351,16 @@ public sealed class VRHandController : MonoBehaviour
 
     public float GetHandVelocity()
     {
-        // Get direction of hand movement
-        Vector3 direction = _handTrackingPos[_handTrackingPos.Count - 1] - _handTrackingPos[0];
+        if (_handTrackingPos.Count < 0)
+        {
+            // Get direction of hand movement
+            Vector3 direction = _handTrackingPos[_handTrackingPos.Count - 1] - _handTrackingPos[0];
 
-        //Hand Velocity
-        return Vector3.Magnitude(direction * 2000);
+            //Hand Velocity
+            return Vector3.Magnitude(direction * 2000);
+        }
+
+        else
+            return 0;
     }
 }

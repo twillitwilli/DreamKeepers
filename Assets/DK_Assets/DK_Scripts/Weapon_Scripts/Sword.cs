@@ -19,6 +19,9 @@ public class Sword : MonoBehaviour
     {
         if (currentHand != null)
         {
+            if (!currentHand.trackHandVelocity)
+                currentHand.trackHandVelocity = true;
+
             Debug.Log("current hand velocity with sword = " + currentHand.GetHandVelocity());
 
             if (currentHand.GetHandVelocity() > 250)

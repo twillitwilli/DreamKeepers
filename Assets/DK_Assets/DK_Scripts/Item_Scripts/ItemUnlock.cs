@@ -118,6 +118,8 @@ public class ItemUnlock : MonoBehaviour
         newSword.transform.SetParent(hand.equippableItemSlot);
         newSword.GetComponent<EquipableItem>().PositionItem();
 
+        // assign hand to sword 
+        newSword.GetComponent<Sword>().currentHand = hand;
     }
 
     void BowUpgrade(VRHandController hand)

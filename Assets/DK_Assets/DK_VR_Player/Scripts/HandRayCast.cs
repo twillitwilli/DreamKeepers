@@ -18,8 +18,8 @@ public sealed class HandRayCast : MonoBehaviour
 
     CapsuleCollider _trigger;
 
-    List<Throwable> _throwableObjects;
-    List<Interactable> _interactableObjects;
+    List<Throwable> _throwableObjects = new List<Throwable>();
+    List<Interactable> _interactableObjects = new List<Interactable>();
 
     float
         _telekineticRange = 10,

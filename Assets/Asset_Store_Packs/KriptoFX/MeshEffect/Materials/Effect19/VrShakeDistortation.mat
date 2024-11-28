@@ -7,18 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mesh_MeshEffectMobile
-  m_Shader: {fileID: 4800000, guid: 6b973ca1a9c91494595f9478785fc761, type: 3}
+  m_Name: VrShakeDistortation
+  m_Shader: {fileID: 4800000, guid: 972a05a1fafc1c54d8287892f2a939b6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _EMISSION
-  - _NORMALMAP
-  m_LightmapFlags: 1
+  m_ValidKeywords:
+  - USE_HEIGHT
+  - USE_MAINTEX
+  - USE_REFRACTIVE
+  m_InvalidKeywords: []
+  m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -27,7 +28,7 @@ Material:
     m_TexEnvs:
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: fd1e47788d217004b8b7325ef23ad5d0, type: 3}
-        m_Scale: {x: 0.4, y: 0.7}
+        m_Scale: {x: 1, y: 3}
         m_Offset: {x: 0, y: 0}
     - _CutoutTex:
         m_Texture: {fileID: 0}
@@ -54,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 288eab14fb0f7ec4398350582ada2801, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -66,8 +67,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: fd1e47788d217004b8b7325ef23ad5d0, type: 3}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
@@ -78,35 +79,28 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _PerlinNoise:
-        m_Texture: {fileID: 2800000, guid: 288eab14fb0f7ec4398350582ada2801, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - permutation:
-        m_Texture: {fileID: 2800000, guid: 100221baada53b74489b25ac8b7e0120, type: 3}
+        m_Texture: {fileID: 2800000, guid: cd8abd51143aa5140aded186614aa040, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AlphaClip: 10
-    - _BumpAmt: 0
+    - _BumpAmt: 3
     - _BumpScale: 1
     - _ColorStrength: 0.5
     - _CullMode: 2
     - _Cutoff: 1
-    - _Cutout: 1
-    - _CutoutThreshold: 0.015
+    - _Cutout: 1.042
+    - _CutoutThreshold: 0
     - _DetailNormalMapScale: 1
-    - _Distortion: 100
+    - _Distortion: 169.39
     - _DstBlend: 0
-    - _FPOW: 1
-    - _FresnelDistort: 1500
-    - _FresnelPow: 5
-    - _FresnelR0: 0.04
-    - _GlossMapScale: 1
+    - _FPOW: 0.3
+    - _FresnelDistort: -300
+    - _FresnelPow: 2
+    - _FresnelR0: -0.2
     - _Glossiness: 0.5
-    - _GlossyReflections: 1
-    - _Height: 1
-    - _HeightScale: 0.3
+    - _Height: 0.1
     - _InvFade: 3
     - _Metallic: 0
     - _Mode: 0
@@ -114,43 +108,31 @@ Material:
     - _OffsetXHeightMap: 0
     - _OffsetYHeightMap: 0
     - _Parallax: 0.02
-    - _R0: -0.1
-    - _RefractiveStrength: 0
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
+    - _R0: 0.05
+    - _RefractiveStrength: -0.5
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseAlphaCliping: 0
     - _UseBlending: 0
     - _UseCutout: 0
     - _UseFresnel: 0
-    - _UseHeight: 0
-    - _UseMainTex: 0
-    - _UseRefractive: 0
+    - _UseHeight: 1
+    - _UseMainTex: 1
+    - _UseRefractive: 1
     - _UseSoft: 0
     - _ZWrite: 1
     - _ZWriteMode: 0
-    - gain: 1
-    - scale_x: 1
-    - scale_y: 1
-    - setup: 0
-    - shift_x: 1.14
-    - shift_y: 1
     m_Colors:
-    - _Color: {r: 0.9264706, g: 0.95740366, b: 1, a: 1}
+    - _Color: {r: 0.7381596, g: 0.7806653, b: 0.8161765, a: 1}
     - _CutoutColor: {r: 1, g: 1, b: 1, a: 1}
-    - _DropWavesScale: {r: 2, g: 1.5, b: -1, a: 0.5}
+    - _DropWavesScale: {r: 1, g: 0.5, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _HeightScaleVector: {r: 0.5, g: 2, b: 0.02, a: 1}
-    - _HeightScaleVector2: {r: 1, g: 1, b: 1, a: 0.2}
-    - _HeightUVScrollDistort: {r: 8, g: 12, b: 0, a: 0}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
-    - _NoiseScale: {r: 1.5, g: 1.5, b: 1, a: 0.45}
+    - _FresnelColor: {r: 0.6838236, g: 1.0947263, b: 1.5, a: 1}
+    - _HeightUVScrollDistort: {r: 0, g: 1, b: 0, a: 0}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 0.39607844}
+    - _NoiseScale: {r: 0, g: 0, b: 0, a: 0}
     - _ReflectColor: {r: 1, g: 1, b: 1, a: 0.5}
-    - _RimColor: {r: 0.06590047, g: 0, b: 0.049198154, a: 1}
-    - _Scale: {r: 2, g: 2, b: 2, a: 1}
-    - _Shift: {r: 0, g: 0, b: 0, a: 500}
-    - _Speed: {r: -1, g: -2, b: 1, a: -5}
-    - _TintColor: {r: 0.88235295, g: 0.88235295, b: 0.88235295, a: 0.22745098}
+    - _RimColor: {r: 0.057093438, g: 0.06710122, b: 0.08088237, a: 1}
+    - _Speed: {r: 2, g: 15, b: 0, a: 8}
+    - _TintColor: {r: 0.32365015, g: 0, b: 0.5188679, a: 0}
   m_BuildTextureStacks: []
